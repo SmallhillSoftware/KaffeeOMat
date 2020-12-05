@@ -1,0 +1,15 @@
+-L r8clib
+-G
+-MS
+-O F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\KaffeeOMat.x30
+-R8C
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\ncrt0.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\dcf77.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\external_interrupts.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\globals.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\graphic.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\main_kafeeomat.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\ST7920.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\sw_vers.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\timer_irq.r30
+F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug\uart1_functions.r30

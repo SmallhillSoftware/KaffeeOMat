@@ -1,0 +1,29 @@
+[HIMDBVersion]
+2.0
+[DATABASE_VERSION]
+"1.0" 
+[CURRENT_PROJECT]
+"KaffeeOMat" 
+[GENERAL_DATA]
+[BREAKPOINTS]
+[OPEN_WORKSPACE_FILES]
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.h" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" 
+[WORKSPACE_FILE_STATES]
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "0,0,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "132,132,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" "88,88,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "44,44,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "66,66,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.h" "-4,-23,675,433,1" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "22,22,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "110,110,513,330,0" 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" "0,0,675,433,0" 
+[END]
