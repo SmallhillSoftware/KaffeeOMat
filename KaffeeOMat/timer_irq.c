@@ -1,8 +1,8 @@
 /************************************************************************************
 *                                                                                   *
 *   File Name   : timer_irq.c                                                       *
-*   Contents    : Timer interrupt related functions of Doppelkopftimer              *
-*   Version     : 1.2                                                               *
+*   Contents    : Timer interrupt related functions of KaffeeOMat                   *
+*   Version     : 1.3, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
 *************************************************************************************/ 
 #include "globals.h"
 
@@ -92,11 +92,23 @@ unsigned long ul_inc_page_period = 0;
 	//disable all IRQ's
 	asm("FCLR I");
 	UL_TIRQ_count1ms++;                           /* 1 msecond counter increment */
+	UC_TIRQ_pwmCount++;
 
 	//read encoder every 1ms
 	if (UI_STATE == D_adjustTimeState)
 	{
 	   f_vd_ENCODER_READ();
+	}
+	
+	//PWM-Output for LCD-Backlight, 100ms base frequency
+	if ( (UL_TIRQ_count1ms%100) == 0 )
+	{
+		UC_TIRQ_pwmCount = 0;
+		BacklightMod_port = 1; //switch port on
+	}
+	if (UC_TIRQ_pwmCount == UC_BACKLIGHT_DUTY)
+	{
+		BacklightMod_port = 0; //switch port off
 	}
 
 	//toggle LED all 1000ms

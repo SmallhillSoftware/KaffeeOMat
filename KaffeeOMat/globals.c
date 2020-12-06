@@ -1,8 +1,8 @@
 /************************************************************************************
 *                                                                                   *
 *   File Name   : globals.c                                                         *
-*   Contents    : Global Support Functions for Funkuhr                              *
-*   Version     : 1.6                                                               *
+*   Contents    : Global Support Functions for KaffeeOMat                           *
+*   Version     : 1.7, based on 1.6 from Funkuhr 20201205                           *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -80,6 +80,12 @@ void f_vd_controllerInit(void)
 
     //settings for LED
     ActLED_port_dir = 1; //Output
+    
+    //settings for backlight duty operation
+	 BacklightMod_port_dir = 1; //port is output    
+    BacklightMod_port = 0;     //output is off
+    UC_BACKLIGHT_DUTY = 30;    //30% duty cycle but shall be off
+    
 
     asm("FSET I");                            /* Interrupt enable */
 
