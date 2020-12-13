@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : timer_irq.c                                                       *
 *   Contents    : Timer interrupt related functions of KaffeeOMat                   *
-*   Version     : 1.3, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
+*   Version     : 1.4, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
 *************************************************************************************/ 
 #include "globals.h"
 
@@ -105,7 +105,13 @@ unsigned long ul_inc_page_period = 0;
 	{
 		UC_TIRQ_pwmCount = 0;
 		BacklightMod_port = 1; //switch port on
-	}
+		f_vd_AcquireVoltages();
+		if (B_VBAT_ACQUIRED == D_TRUE)
+		{
+			UC_BACKLIGHT_DUTY = D_CONV_VBAT_MV_2_DC(UI_VBAT_VOLTAGE_MV);
+			B_VBAT_ACQUIRED = D_FALSE;
+		} //end of if (B_VBAT_ACQUIRED == D_TRUE)
+	} //end of if ( (UL_TIRQ_count1ms%100) == 0 )
 	if (UC_TIRQ_pwmCount == UC_BACKLIGHT_DUTY)
 	{
 		BacklightMod_port = 0; //switch port off

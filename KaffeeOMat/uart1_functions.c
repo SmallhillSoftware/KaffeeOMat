@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : uart_functions.c                                                  *
 *   Contents    : UART-related functions for the Funkuhr                            *
-*   Version     : 1.7                                                               *
+*   Version     : 1.8                                                               *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -12,6 +12,7 @@
 //#define BIT_TIMINGS
 //#define RECEIVED_BITS
 //#define FRAME_VALIDITY
+#define VBAT_DUTYCYCLE
 
 /************************************************************************************
 Name:        sendTxd1
@@ -305,6 +306,35 @@ if (UC_DCF77_FIELD_CNT > 0)
 		} //end of if ((ST_HOUR.uc_noOfTmpDateVals > 0) && B_page0_1)
 	} //end of else of if (f_uc_get_dcf77_state() == D_dcf77_state_SYNC_FOUND)	
 #endif //FRAME_VALIDITY
+
+#ifdef VBAT_DUTYCYCLE
+	f_vd_sendTxd1('B');
+	f_vd_sendTxd1('A');
+	f_vd_sendTxd1('T');
+	f_vd_sendTxd1(':');
+	digit = UI_VBAT_VOLTAGE_MV/1000;
+	f_vd_sendTxd1(0x30+digit);
+	value = UI_VBAT_VOLTAGE_MV - (digit*1000);
+	digit = value/100;
+	f_vd_sendTxd1(0x30+digit);
+	value = value - (digit*100);
+	digit = value/10;
+	f_vd_sendTxd1(0x30+digit);
+	value = value - (digit*10);
+	f_vd_sendTxd1(0x30+value);				
+	//####################################
+	f_vd_sendTxd1('D');
+	f_vd_sendTxd1('C');
+	f_vd_sendTxd1(':');
+	digit = UC_BACKLIGHT_DUTY/100;
+	f_vd_sendTxd1(0x30+digit);
+	value = UC_BACKLIGHT_DUTY - (digit*100);
+	digit = value/10;
+	f_vd_sendTxd1(0x30+digit);
+	value = value - (digit*10);
+	f_vd_sendTxd1(0x30+value);
+	//####################################
+#endif //VBAT_DUTYCYCLE
 
 f_vd_sendTxd1('e'); /* send end character 'e' */
 f_vd_sendTxd1('\r');

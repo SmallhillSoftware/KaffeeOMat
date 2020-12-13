@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : globals.c                                                         *
 *   Contents    : Global Support Functions for KaffeeOMat                           *
-*   Version     : 1.7, based on 1.6 from Funkuhr 20201205                           *
+*   Version     : 1.8, based on 1.6 from Funkuhr 20201205                           *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -72,7 +72,7 @@ void f_vd_controllerInit(void)
 
     f_vd_DCF77_init(D_TRUE);               /* Initial setting of DCF77-environment with hard reset */
 
-    //f_vd_adcInit();
+    f_vd_adcInit();
 
     #ifdef UART1_DEBUGGING
         f_vd_UART1_init();

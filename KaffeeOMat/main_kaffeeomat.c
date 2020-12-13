@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : MAIN_KAFFEEOMAT.c                                                    *
 *   Contents    : Main Loop for KaffeeOMat                                             *
-*   Version     : 1.2 bases on main_funkuhr.c 1.17                                                               *
+*   Version     : 1.3 bases on main_funkuhr.c 1.17                                                               *
 *************************************************************************************/ 
 
 #include "globals.h"
@@ -25,12 +25,12 @@ unsigned int  UI_STATE_CHANGE = 0;
 unsigned int  UI_ENC_VALUE;
 volatile char C_ENC_DELTA = 0;
 _Bool         B_SWITCH_OK = D_FALSE;
-unsigned int  UI_VBAT_VOLTAGE_AD = 0;
+volatile unsigned int  UI_VBAT_VOLTAGE_MV = 0;
 _Bool         B_VBAT_ACQUIRED = D_FALSE;
 unsigned int  UI_CLOCK_YEAR  = 0;
 unsigned int  UI_CLOCK_MONTH = 0;
 unsigned int  UI_CLOCK_DAY   = 0;
-unsigned char UC_BACKLIGHT_DUTY = 0;
+volatile unsigned char UC_BACKLIGHT_DUTY = 0;
 
 void main (void)
 {

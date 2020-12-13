@@ -2,12 +2,12 @@
 *                                                                                   *
 *   File Name   : globals.h                                                         *
 *   Contents    : Global Variables for KaffeeOMat                                   *
-*   Version     : 1.8, bases on global.h from Funkuhr 20201205                      *
+*   Version     : 1.10, bases on global.h from Funkuhr 20201205                      *
 *************************************************************************************/ 
 #include "sfr_r813.h"                       /* Definition of the R8C/10 SFR */
 
 //debugging defines
-//#define UART1_DEBUGGING
+#define UART1_DEBUGGING
 
 //global defines
 #define D_undefState      0
@@ -17,7 +17,10 @@
 #define D_warnVbattState  6
 
 #define D_SHOW_REV_TIME_MS 5000
-#define D_CONV_AD_TO_MV 20 //in real 20000/1024=19.53
+/* valid for a voltage divider of 6k8 between measured voltage and ADC-input and 5k1 between ADC and GND */
+#define D_CONV_ADC_2_VBAT_MV(x) ((unsigned int)(((unsigned long)114*(unsigned long)x)/((unsigned long)10)))
+/* valid to ensure 5700mV with PWM-DC and considering 50mV VCE over transistor at 30mA */
+#define D_CONV_VBAT_MV_2_DC(x) ((x>5750) ? ((unsigned char)(((unsigned long)575000)/((unsigned long)(x)))) : (100))
 #define D_TRUE  1
 #define D_FALSE 0
 #define D_NUM_OF_CHARS_PER_LINE 16
@@ -49,11 +52,11 @@ extern volatile unsigned int  UI_CLOCK_MINS;
 extern volatile unsigned int  UI_CLOCK_SECS;
 extern unsigned long          UL_int2_IRQ_timestamp;
 extern unsigned int           UI_ENC_VALUE;
-extern unsigned int           UI_VBAT_VOLTAGE_AD;
+extern volatile unsigned int  UI_VBAT_VOLTAGE_MV;
 extern volatile char          C_ENC_DELTA;
 extern _Bool                  B_SWITCH_OK;
 extern _Bool                  B_VBAT_ACQUIRED;
-extern unsigned char          UC_BACKLIGHT_DUTY;
+extern volatile unsigned char UC_BACKLIGHT_DUTY;
 
 //global support functions
 unsigned long timerDifference (unsigned long OLD, unsigned long NEW);
