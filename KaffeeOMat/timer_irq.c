@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : timer_irq.c                                                       *
 *   Contents    : Timer interrupt related functions of KaffeeOMat                   *
-*   Version     : 1.4, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
+*   Version     : 1.6, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
 *************************************************************************************/ 
 #include "globals.h"
 
@@ -100,11 +100,14 @@ unsigned long ul_inc_page_period = 0;
 	   f_vd_ENCODER_READ();
 	}
 	
-	//PWM-Output for LCD-Backlight, 100ms base frequency
-	if ( (UL_TIRQ_count1ms%100) == 0 )
+	//PWM-Output for LCD-Backlight, 25ms base frequency
+	if ( (UL_TIRQ_count1ms%25) == 0 )
 	{
 		UC_TIRQ_pwmCount = 0;
-		BacklightMod_port = 1; //switch port on
+		if (B_BACKLIGHT_ON == D_TRUE)
+		{
+			BacklightMod_port = 1; //switch port on
+		} //end of if (B_BACKLIGHT_ON == D_TRUE)
 		f_vd_AcquireVoltages();
 		if (B_VBAT_ACQUIRED == D_TRUE)
 		{
@@ -119,7 +122,7 @@ unsigned long ul_inc_page_period = 0;
 
 	//toggle LED all 1000ms
 	if ( (UL_TIRQ_count1ms%1000) == 0 )           /* 1 second have passed ? */
-    	{
+	{
 		if (UI_CLOCK_SECS == 59)
 		{
 			UI_CLOCK_SECS = 0;
@@ -139,16 +142,16 @@ unsigned long ul_inc_page_period = 0;
 			{
 				UI_CLOCK_MINS++;
 			}
-		}
+		} //end of if (UI_CLOCK_SECS == 59)
 		else
 		{
 			UI_CLOCK_SECS++;
-		}
-        	ActLED_port = ~ActLED_port;
-                #ifdef UART1_DEBUGGING
-		    f_vd_sendValues();                    /* send XDIR, YDIR, ZDIR, POS values on UART1 for debugging purposes */
-                #endif
-	}
+		} //end of else of if (UI_CLOCK_SECS == 59)
+		ActLED_port = ~ActLED_port;
+		#ifdef UART1_DEBUGGING
+			f_vd_sendValues();                    /* send internal values on UART1 for debugging purposes */
+		#endif
+	} //end of if ( (UL_TIRQ_count1ms%1000) == 0 )
 	//enable all IRQ's
 	asm("FSET I");
 }

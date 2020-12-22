@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : globals.c                                                         *
 *   Contents    : Global Support Functions for KaffeeOMat                           *
-*   Version     : 1.8, based on 1.6 from Funkuhr 20201205                           *
+*   Version     : 1.9, based on 1.6 from Funkuhr 20201205                           *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -84,9 +84,8 @@ void f_vd_controllerInit(void)
     //settings for backlight duty operation
 	 BacklightMod_port_dir = 1; //port is output    
     BacklightMod_port = 0;     //output is off
-    UC_BACKLIGHT_DUTY = 30;    //30% duty cycle but shall be off
+    UC_BACKLIGHT_DUTY = 0;     //30% duty cycle but shall be off
     
-
     asm("FSET I");                            /* Interrupt enable */
 
 }

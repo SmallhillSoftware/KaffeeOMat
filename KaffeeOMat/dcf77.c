@@ -131,6 +131,9 @@ void f_vd_DCF77_init(_Bool dcf77_tmp_data_reset)
 	ki3en = 0;                                   /* disable the Key-Input-3-IRQ */
 	ki3pl = 0;                                   /* start acquisition on falling edge on the Key-Input-3-IRQ */    
 	pu02  = 0;                                   /* no pull-up of KIx-inputs on P1.0..P1.3 */
+	/* settings for DCF77 PowerOn (PON) */
+   D_dcf77_PONOUT_PIN_DIR = 1;                  /* port is output */
+   D_dcf77_PONOUT_PIN = 1;                      /* port is on, to enable DCF77 */	
 	D_dcf77_INPUT_PIN_DIR = 0;                   /* DCF77-pin should be input*/
 	UC_DCF77_EDGE = D_dcf77_FALLING_EDGE;
 	UC_DCF77_STATE = D_dcf77_state_NO_SIGNAL;
@@ -209,6 +212,7 @@ Description: Disable the DCF77-IRQ
 ************************************************************************************/
 void f_vd_DCF77_disableIRQ(void)
 {
+	 D_dcf77_PONOUT_PIN = 0;                      /* switch DCF77 power on to off */    
     D_dcf77_IRQ_CTRL = 0;                        /* set KeyIn-IRQ-priority to off */
     D_dcf77_IRQ_REQ  = 0;                        /* clear interrupt request flag */
 }
