@@ -11,8 +11,8 @@
 
 //#define BIT_TIMINGS
 //#define RECEIVED_BITS
-//#define FRAME_VALIDITY
-#define VBAT_DUTYCYCLE
+#define FRAME_VALIDITY
+//#define VBAT_DUTYCYCLE
 
 /************************************************************************************
 Name:        sendTxd1

@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.h                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.21                                                              *
+*   Version     : 1.22                                                              *
 *************************************************************************************/ 
 #define DATE_REQUIRED 1
 
@@ -51,10 +51,19 @@
 #define D_date_eval_too_early          2
 
 /*values of UC_DCF77_EDGE, defined polarity should match with needed IRQ-polarity in
-* processor register
+* processor register, next define has to be set (1) for 5V-supplied Reichelt-DCF77-
+* receiver with no level shifter, meaning no inverter, but has to reset (0) for 3,3V-
+* or 1,8V-supplied Pollin-DCF77-receiver with level shifter that inverts the signal. 
 */
-#define D_dcf77_FALLING_EDGE           0
-#define D_dcf77_RISING_EDGE            1
+#define D_reicheltDCF77_noInverter     1
+#if D_reicheltDCF77_noInverter
+	#define D_dcf77_FALLING_EDGE           1
+	#define D_dcf77_RISING_EDGE            0
+#else
+	#define D_dcf77_FALLING_EDGE           0
+	#define D_dcf77_RISING_EDGE            1
+#endif
+
 
 #define D_dcf77_INPUT_PIN           p1_0
 #define D_dcf77_INPUT_PIN_DIR      pd1_0
