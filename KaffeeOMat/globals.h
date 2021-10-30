@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : globals.h                                                         *
 *   Contents    : Global Variables for KaffeeOMat                                   *
-*   Version     : 1.12, bases on global.h from Funkuhr 20201205                      *
+*   Version     : 1.12, bases on global.h from Funkuhr 20201205 and 1.11 from MatchDisplay 20211026 *
 *************************************************************************************/ 
 #include "sfr_r813.h"                       /* Definition of the R8C/10 SFR */
 
@@ -61,9 +61,6 @@ extern _Bool                  B_VBAT_ACQUIRED;
 extern _Bool                  B_BACKLIGHT_ON;
 extern volatile unsigned char UC_BACKLIGHT_DUTY;
 
-//global support functions
-unsigned long timerDifference (unsigned long OLD, unsigned long NEW);
-unsigned int positiveDifference (unsigned int A, unsigned int B);
 
 void f_vd_controllerInit(void);
 void f_vd_outputHandler(unsigned long content_to_display);
@@ -76,5 +73,7 @@ void f_vd_AcquireVoltages(void);
 void f_vd_ENCODER_READ(void);
 
 //debug
+#ifdef UART1_DEBUGGING
 void f_vd_UART1_init(void);
 void f_vd_sendValues(void);
+#endif

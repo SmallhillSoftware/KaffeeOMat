@@ -19,8 +19,8 @@ void f_vd_TIMERX_init(void)
 
     /* Setting the main cycle timer                   */
     /* 20 MHz * 1/8 * 1/50 * 1/10 => 250us  */
-    prex = 50-1;                            /* Setting Prescaler X register */
-    tx   = 10-1;                            /* Setting timer X register */
+    prex = (unsigned char)(50-1);                            /* Setting Prescaler X register */
+    tx   = (unsigned char)(10-1);                            /* Setting timer X register */
 
 	
     txmr = 0x00;                            /* Timer X : timer mode */
@@ -40,9 +40,9 @@ void f_vd_TIMERY_init(void)
 
     /* Setting the main cycle timer                   */
     /* 20 MHz * 1/8 * 1/20 * 1/125 => 100 Hz = 1ms  */
-    prey   = 20-1;                          /* Setting Prescaler Y register */
+    prey   = (unsigned char)(20-1);                          /* Setting Prescaler Y register */
     tysc   = 0;                             /* Setting timer Y secondary register */
-    typr   = 125-1;                         /* Setting timer Y register */
+    typr   = (unsigned char)(125-1);                         /* Setting timer Y register */
 
     tymod0 = 0;                             /* Timer Y : timer mode */
     tywc   = 0;                             /* Write to timer and reload register simultaneously */
@@ -64,9 +64,9 @@ void f_vd_TIMERZ_init(void)
     tzck0 = 0;                              /* Timer Y underflow @1ms = count source */
     tzck1 = 1;
 
-    prez   = 4-1;                           /* Setting Prescaler Z register */
-    tzsc   = 200-1;                         /* Setting timer Z secondary register */
-    tzpr   = 50-1;                          /* Setting timer Z primary register */
+    prez   = (unsigned char)(4-1);                           /* Setting Prescaler Z register */
+    tzsc   = (unsigned char)(200-1);                         /* Setting timer Z secondary register */
+    tzpr   = (unsigned char)(50-1);                          /* Setting timer Z primary register */
 
     tzmod0 = 1;                             
     tzmod1 = 0;                             /* Timer Z : Programmable waveform generation mode */

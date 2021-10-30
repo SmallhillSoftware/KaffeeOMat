@@ -195,7 +195,7 @@ unsigned char uc_valid_chk_result;
 				GLCD_WriteUINumber(8,0,UI_CLOCK_MONTH,1,2);
 				GLCD_WriteUINumber(5,0,UI_CLOCK_DAY,1,2);
 				//t8
-				if (timerDifference(UL_START_TIMESTAMP, UL_TIRQ_count1ms) > D_SHOW_REV_TIME_MS)
+				if ((UL_TIRQ_count1ms - UL_START_TIMESTAMP) > D_SHOW_REV_TIME_MS)
 				{  
 					B_BACKLIGHT_ON = D_FALSE;					
 					UI_STATE = D_runningState;
@@ -213,7 +213,7 @@ unsigned char uc_valid_chk_result;
 				} //end of if (UI_STATE_CHANGE)
 				GLCD_WriteUINumber(9,1,UI_VBAT_VOLTAGE_MV,1,4);
 				//t8
-				if (timerDifference(UL_START_TIMESTAMP, UL_TIRQ_count1ms) > D_SHOW_REV_TIME_MS)
+				if ((UL_TIRQ_count1ms - UL_START_TIMESTAMP) > D_SHOW_REV_TIME_MS)
 				{  
 					B_BACKLIGHT_ON = D_FALSE;					
 					UI_STATE = D_runningState;

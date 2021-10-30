@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.h                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.22                                                              *
+*   Version     : 1.25, bases on 1.24 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #define DATE_REQUIRED 1
 
@@ -87,6 +87,7 @@
 #else
 	#define D_dcf77_MAX_NO_OF_USED_BITS    35
 #endif
+#define D_dcf77_DEBOUNCE_TIME_DCF77DATA_MS 10
 
 struct ST_MINVALS
 {
@@ -112,21 +113,21 @@ struct ST_DATEVALS
 };
 
 //debug only
-extern volatile unsigned char UC_DCF77_RECEIVED_FRAME;
-extern volatile unsigned char UC_DCF77_STATE;
-extern volatile unsigned char UC_DCF77_EDGE;
-extern volatile unsigned long UL_DCF77_FALLING_TIME;
-extern volatile unsigned long UL_DCF77_PREVIOUS_FALLING_TIME;
-extern volatile unsigned long UL_DCF77_RISING_TIME;
-extern volatile unsigned long UL_DCF77_BIT_DURATION;
-extern volatile unsigned long UL_DCF77_BIT_DISTANCE;
-extern volatile unsigned char UC_DCF77_FIELD_CNT;
-extern volatile unsigned char UC_DCF77_BIT_FIELD[D_dcf77_MAX_NO_OF_BITS+1];
+extern unsigned char volatile UC_DCF77_RECEIVED_FRAME;
+extern unsigned char volatile UC_DCF77_STATE;
+extern unsigned char volatile UC_DCF77_EDGE;
+extern unsigned long volatile UL_DCF77_FALLING_TIME;
+extern unsigned long volatile UL_DCF77_PREVIOUS_FALLING_TIME;
+extern unsigned long volatile UL_DCF77_RISING_TIME;
+extern unsigned long volatile UL_DCF77_BIT_DURATION;
+extern unsigned long volatile UL_DCF77_BIT_DISTANCE;
+extern unsigned char volatile UC_DCF77_FIELD_CNT;
+extern unsigned char volatile UC_DCF77_BIT_FIELD[D_dcf77_MAX_NO_OF_BITS+1];
 extern unsigned char UC_DCF77_DATE_BITCOUNT;
 extern unsigned char UC_DCF77_HOUR_BITCOUNT;
 extern unsigned char UC_DCF77_MIN_BITCOUNT;
-extern volatile struct ST_MINVALS    ST_MINUTE;
-extern volatile struct ST_DATEVALS   ST_HOUR;
+extern struct ST_MINVALS volatile ST_MINUTE;
+extern struct ST_DATEVALS volatile ST_HOUR;
 extern unsigned char UC_DATE_MINUTE;
 extern unsigned char UC_DATE_HOUR;
 #ifdef DATE_REQUIRED

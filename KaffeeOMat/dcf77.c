@@ -2,25 +2,25 @@
 *                                                                                   *
 *   File Name   : dcf77.c                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.33                                                              *
+*   Version     : 1.40, bases on 1.39 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
 
 //global DCF77-variables, changed in ISR
-volatile unsigned char UC_DCF77_RECEIVED_FRAME;
-volatile unsigned char UC_DCF77_STATE;
-volatile unsigned char UC_DCF77_EDGE;
-volatile unsigned long UL_DCF77_FALLING_TIME;
-volatile unsigned long UL_DCF77_PREVIOUS_FALLING_TIME;
-volatile unsigned long UL_DCF77_RISING_TIME;
-volatile unsigned long UL_DCF77_BIT_DURATION;
-volatile unsigned long UL_DCF77_BIT_DISTANCE;
-volatile unsigned char UC_DCF77_FIELD_CNT;
-volatile unsigned char UC_DCF77_BIT_FIELD[D_dcf77_MAX_NO_OF_BITS+1];
+unsigned char volatile UC_DCF77_RECEIVED_FRAME;
+unsigned char volatile UC_DCF77_STATE;
+unsigned char volatile UC_DCF77_EDGE;
+unsigned long volatile UL_DCF77_FALLING_TIME;
+unsigned long volatile UL_DCF77_PREVIOUS_FALLING_TIME;
+unsigned long volatile UL_DCF77_RISING_TIME;
+unsigned long volatile UL_DCF77_BIT_DURATION;
+unsigned long volatile UL_DCF77_BIT_DISTANCE;
+unsigned char volatile UC_DCF77_FIELD_CNT;
+unsigned char volatile UC_DCF77_BIT_FIELD[D_dcf77_MAX_NO_OF_BITS+1];
 //global DCF77-variables
-volatile struct ST_MINVALS    ST_MINUTE;
-volatile struct ST_DATEVALS   ST_HOUR;
+struct ST_MINVALS volatile ST_MINUTE;
+struct ST_DATEVALS volatile ST_HOUR;
 unsigned char UC_DATE_MINUTE;
 unsigned char UC_DATE_HOUR;
 #ifdef DATE_REQUIRED
@@ -774,8 +774,8 @@ unsigned char f_uc_check_dcf77_date_validity(void)
 			if (ST_MINUTE.uc_DATEVAL_FRAMENO == ST_HOUR.uc_DATEVAL_FRAMENO)
 			{
 				/* valid minute and hour are received in the same dcf77-frame */
-				UC_DATE_MINUTE  = ST_MINUTE.uc_DATEVAL;
-				UC_DATE_HOUR	 = ST_HOUR.uc_DATEVAL;
+				UC_DATE_MINUTE  = (unsigned char)ST_MINUTE.uc_DATEVAL;
+				UC_DATE_HOUR	= (unsigned char)ST_HOUR.uc_DATEVAL;
 				#ifdef DATE_REQUIRED
 					UC_DATE_DAY     = ST_DAY.uc_DATEVAL;
 					UC_DATE_MONTH   = ST_MONTH.uc_DATEVAL;
@@ -787,8 +787,8 @@ unsigned char f_uc_check_dcf77_date_validity(void)
 			else if (ST_MINUTE.uc_DATEVAL_FRAMENO < ST_HOUR.uc_DATEVAL_FRAMENO)
 			{
 				/* a valid minute was received in an earlier dcf77-frame than the valid hour */
-				UC_DATE_MINUTE = ST_MINUTE.uc_DATEVAL + (2*(ST_HOUR.uc_DATEVAL_FRAMENO - ST_MINUTE.uc_DATEVAL_FRAMENO));
-				UC_DATE_HOUR = ST_HOUR.uc_DATEVAL;
+				UC_DATE_MINUTE = (unsigned char)(ST_MINUTE.uc_DATEVAL + (2*(ST_HOUR.uc_DATEVAL_FRAMENO - ST_MINUTE.uc_DATEVAL_FRAMENO)));
+				UC_DATE_HOUR = (unsigned char)ST_HOUR.uc_DATEVAL;
 				while (UC_DATE_MINUTE > 59)
 				{
 					UC_DATE_MINUTE -= 60;
@@ -808,10 +808,10 @@ unsigned char f_uc_check_dcf77_date_validity(void)
 				/* a valid minute was received in an later dcf77-frame than the valid hour */
 				if ((ST_MINUTE.uc_DATEVAL_FRAMENO - ST_HOUR.uc_DATEVAL_FRAMENO) > ST_MINUTE.uc_DATEVAL)
 				{
-					UC_DATE_HOUR = ST_HOUR.uc_DATEVAL + 1;	
+					UC_DATE_HOUR = (unsigned char)(ST_HOUR.uc_DATEVAL + 1);	
 				}
 				/* Hier noch abfangen, dass Stunde groesser als 23 wird */
-				UC_DATE_MINUTE = ST_MINUTE.uc_DATEVAL;
+				UC_DATE_MINUTE = (unsigned char)ST_MINUTE.uc_DATEVAL;
 				#ifdef DATE_REQUIRED
 					UC_DATE_DAY     = ST_DAY.uc_DATEVAL;
 					UC_DATE_MONTH   = ST_MONTH.uc_DATEVAL;
@@ -840,57 +840,65 @@ Description: an external HW-IRQ is needed, which triggers on rising and falling
 #pragma interrupt dcf77_keyin0_irq
 void dcf77_keyin0_irq(void)
 {
+unsigned long ul_diffTime;
 	asm("FCLR I"); //disable all IRQ's
 	D_dcf77_IRQ_REQ = 0; //clear interrupt request flag
 	if (UC_DCF77_STATE < D_dcf77_state_FRAME_RECEIVED)
 	{
 	   if (UC_DCF77_EDGE == D_dcf77_FALLING_EDGE)
 	   {
-	      UL_DCF77_FALLING_TIME = UL_TIRQ_count1ms; //store timer value of current falling edge
-	      UC_DCF77_EDGE = D_dcf77_RISING_EDGE;
-	      D_dcf77_IRQ_REQ = 1;
-	      D_dcf77_IRQ_POLARITY = D_dcf77_RISING_EDGE; //change IRQ-trigger-polarity
-	      D_dcf77_IRQ_REQ = 0;
+			//DCF77-data-input needs to be debounced			
+			ul_diffTime = UL_TIRQ_count1ms - UL_DCF77_RISING_TIME;
+			if (ul_diffTime > D_dcf77_DEBOUNCE_TIME_DCF77DATA_MS)
+			{ 	      
+	      	UL_DCF77_FALLING_TIME = UL_TIRQ_count1ms; //store timer value of current falling edge
+	      	UC_DCF77_EDGE = D_dcf77_RISING_EDGE;
+	      	D_dcf77_IRQ_REQ = 1; //ir_int2ic needs to be set when changing r1edg-polarity
+	      	D_dcf77_IRQ_POLARITY = D_dcf77_RISING_EDGE; //change IRQ-trigger-polarity
+	      	D_dcf77_IRQ_REQ = 0;
+	      } //end of if (ul_diffTime > cDebounceTimeDcf77DataMs)
 	   } //end of if (UC_DCF77_EDGE == D_dcf77_FALLING_EDGE)
 	   else //rising edge
 	   {
-	      UL_DCF77_RISING_TIME = UL_TIRQ_count1ms; //store timer value of current rising edge
-	      UC_DCF77_EDGE = D_dcf77_FALLING_EDGE;
-	      D_dcf77_IRQ_REQ = 1;
-	      D_dcf77_IRQ_POLARITY = D_dcf77_FALLING_EDGE; //change IRQ-trigger-polarity
-	      D_dcf77_IRQ_REQ = 0;
-	      if (UC_DCF77_STATE == D_dcf77_state_NO_SIGNAL) //no previous complete bit received
-	      {
-				UC_DCF77_STATE = D_dcf77_state_BIT_RECEIVED; //now at least 1 complete bit was received
-		      UL_DCF77_PREVIOUS_FALLING_TIME = UL_DCF77_FALLING_TIME;
-	      } //end of if (UC_DCF77_STATE == D_dcf77_state_NO_SIGNAL)
-	      else
-	      {
-				UL_DCF77_BIT_DURATION = timerDifference(UL_DCF77_FALLING_TIME, UL_DCF77_RISING_TIME);
-				UL_DCF77_BIT_DISTANCE = timerDifference(UL_DCF77_PREVIOUS_FALLING_TIME, UL_DCF77_FALLING_TIME);
+			//DCF77-data-input needs to be debounced			
+			ul_diffTime = UL_TIRQ_count1ms - UL_DCF77_FALLING_TIME;
+			if (ul_diffTime > D_dcf77_DEBOUNCE_TIME_DCF77DATA_MS)
+			{	      
+	      	UL_DCF77_RISING_TIME = UL_TIRQ_count1ms; //store timer value of current rising edge
+	      	UC_DCF77_EDGE = D_dcf77_FALLING_EDGE;
+	      	UL_DCF77_BIT_DURATION = (unsigned long)0xFFF & (UL_DCF77_RISING_TIME - UL_DCF77_FALLING_TIME);
+				UL_DCF77_BIT_DISTANCE = (unsigned long)0xFFF & (UL_DCF77_FALLING_TIME - UL_DCF77_PREVIOUS_FALLING_TIME);
 				UL_DCF77_PREVIOUS_FALLING_TIME = UL_DCF77_FALLING_TIME;
+				D_dcf77_IRQ_REQ = 1; //ir_int2ic needs to be set when changing r1edg-polarity
+	      	D_dcf77_IRQ_POLARITY = D_dcf77_FALLING_EDGE; //change IRQ-trigger-polarity
+	      	D_dcf77_IRQ_REQ = 0;
+	   		if (UC_DCF77_STATE == D_dcf77_state_NO_SIGNAL) //no previous complete bit received
+	   		{
+					UC_DCF77_STATE = D_dcf77_state_BIT_RECEIVED; //now at least 1 complete bit was received
+	   		} //end of if (UC_DCF77_STATE == D_dcf77_state_NO_SIGNAL)
 				if (f_b_check_dcf77_sync_pulse(UL_DCF77_BIT_DISTANCE))
 				{
 					UC_DCF77_STATE = D_dcf77_state_SYNC_FOUND;
 					UC_DCF77_FIELD_CNT = 0;
 				} //end of if (f_b_check_dcf77_sync_pulse(UL_DCF77_BIT_DISTANCE))
-				if ( (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND) &&
-					 (UC_DCF77_FIELD_CNT < (D_dcf77_MAX_NO_OF_BITS+1))
-					)
+				if (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND)
 				{
-					UC_DCF77_BIT_FIELD[UC_DCF77_FIELD_CNT] = f_uc_dcf77_bit_decoder(UL_DCF77_BIT_DURATION, UL_DCF77_BIT_DISTANCE);
-					UC_DCF77_FIELD_CNT++;
-				} //end of if (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND) && (UC_DCF77_FIELD_CNT <= (D_dcf77_MAX_NO_OF_BITS+1)
-				if (UC_DCF77_FIELD_CNT == D_dcf77_MAX_NO_OF_BITS)
-				{
-					UC_DCF77_STATE = D_dcf77_state_FRAME_RECEIVED;
-					if (UC_DCF77_RECEIVED_FRAME < 25)
+					if (UC_DCF77_FIELD_CNT < (D_dcf77_MAX_NO_OF_BITS+1))
 					{
-						UC_DCF77_RECEIVED_FRAME++;
-					} //end of if (UC_DCF77_RECEIVED_FRAME < 25)
-				} //end of if (UC_DCF77_FIELD_CNT == D_dcf77_MAX_NO_OF_BITS)
-			} //end of else of if (UC_DCF77_FIELD_CNT == D_dcf77_state_NO_SIGNAL)
-	   } //end of rising edge
+						UC_DCF77_BIT_FIELD[UC_DCF77_FIELD_CNT] = f_uc_dcf77_bit_decoder(UL_DCF77_BIT_DURATION, UL_DCF77_BIT_DISTANCE);
+						UC_DCF77_FIELD_CNT++;
+					} //end of if (UC_DCF77_FIELD_CNT <= (D_dcf77_MAX_NO_OF_BITS+1)
+					if (UC_DCF77_FIELD_CNT == D_dcf77_MAX_NO_OF_BITS)
+					{
+						UC_DCF77_STATE = D_dcf77_state_FRAME_RECEIVED;
+						if (UC_DCF77_RECEIVED_FRAME < 25)
+						{
+							UC_DCF77_RECEIVED_FRAME++;
+						} //end of if (UC_DCF77_RECEIVED_FRAME < 25)
+					} //end of if (UC_DCF77_FIELD_CNT == D_dcf77_MAX_NO_OF_BITS)
+				} //end of if (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND)
+			} //end of if (ul_diffTime > cDebounceTimeDcf77DataMs)				
+	  	} //end of rising edge
 	} //end of if (UC_DCF77_STATE < D_dcf77_state_FRAME_RECEIVED)
 	asm("FSET I"); //enable all IRQ's
 }

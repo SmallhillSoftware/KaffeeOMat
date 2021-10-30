@@ -1,4 +1,4 @@
-* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Wed Feb 10 00:40:29 2021  PAGE 001
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Sat Oct 30 13:32:21 2021  PAGE 001
 
   SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4
 
@@ -64,7 +64,7 @@
     60                            X     .if	_KD_ == 1
     61                            X     .else
     62                            X     .endif // _KD_
-* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Wed Feb 10 00:40:29 2021  PAGE 002
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Sat Oct 30 13:32:21 2021  PAGE 002
 
   SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4
 
@@ -130,7 +130,7 @@
    122                            X     .if __HEAP__ != 1
    123                            X     .endif
    124                            X     .if __STANDARD_IO__ == 1
-* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Wed Feb 10 00:40:29 2021  PAGE 003
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Sat Oct 30 13:32:21 2021  PAGE 003
 
   SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4
 
@@ -196,7 +196,7 @@
    183                                  ;---------------------------------------------------------------------
    184                                  	N_BCOPY data_SEI_top,data_SE_top,data_SE
    185  0004A  A20000r             M S  	mov.w	#(data_SEI_top & 0FFFFH),A0
-* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Wed Feb 10 00:40:29 2021  PAGE 004
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Sat Oct 30 13:32:21 2021  PAGE 004
 
   SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4
 
@@ -262,7 +262,7 @@
    245  0008A  EB700000                 	ldc	#0h,fb	; for debuger
    246                                  
    247                                  	.glb	_main
-* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Wed Feb 10 00:40:29 2021  PAGE 005
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Sat Oct 30 13:32:21 2021  PAGE 005
 
   SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4
 

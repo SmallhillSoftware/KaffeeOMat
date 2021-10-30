@@ -69,7 +69,7 @@ void Extint_2_int(void)
 {
 unsigned long ul_diff;
 	ir_int2ic     = 0;    /* clear interrupt request flag */
-	ul_diff = timerDifference (UL_int2_IRQ_timestamp, UL_TIRQ_count1ms);
+	ul_diff = UL_TIRQ_count1ms - UL_int2_IRQ_timestamp;
 	if (ul_diff > D_switchDebounceTimeMs) /* switch debouncing */
 	{
 	   UL_int2_IRQ_timestamp = UL_TIRQ_count1ms; /* update timestamp of sucessfull IRQ */
