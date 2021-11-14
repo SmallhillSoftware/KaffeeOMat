@@ -4,5 +4,5 @@
 *   File Name   : sw_vers.c                                                         *
 *   automatically created by GenSWVers rev. 1.3                                     *
 *************************************************************************************/
-unsigned long mk_date = 20211030;
-unsigned long mk_time = 13321500;
+unsigned long mk_date = 20211107;
+unsigned long mk_time = 16415700;

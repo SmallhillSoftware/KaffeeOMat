@@ -55,7 +55,8 @@
 * receiver with no level shifter, meaning no inverter, but has to reset (0) for 3,3V-
 * or 1,8V-supplied Pollin-DCF77-receiver with level shifter that inverts the signal. 
 */
-#define D_reicheltDCF77_noInverter     1
+/* Pollin-Module equipped */
+#define D_reicheltDCF77_noInverter     0
 #if D_reicheltDCF77_noInverter
 	#define D_dcf77_FALLING_EDGE           1
 	#define D_dcf77_RISING_EDGE            0
