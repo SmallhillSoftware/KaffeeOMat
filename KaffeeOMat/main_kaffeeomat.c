@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : MAIN_KAFFEEOMAT.c                                                    *
 *   Contents    : Main Loop for KaffeeOMat                                             *
-*   Version     : 1.4 bases on main_funkuhr.c 1.17                                                               *
+*   Version     : 1.5 bases on main_funkuhr.c 1.17                                                               *
 *************************************************************************************/ 
 
 #include "globals.h"
@@ -97,7 +97,7 @@ unsigned char uc_valid_chk_result;
 				if (UI_STATE_CHANGE)
 				{
 					GLCD_WriteString(0,0,"Zeit:           ");
-					GLCD_WriteString(0,1,"DCF77-Sync:     ");
+					GLCD_WriteString(0,1,"DCF77-Syn:      ");
 					GLCD_WriteString(7,0,".");
 					GLCD_WriteString(10,0,"-");
 					GLCD_WriteString(13,0,":");
@@ -108,7 +108,8 @@ unsigned char uc_valid_chk_result;
 				GLCD_WriteUINumber(11,0,UI_CLOCK_HOURS,1,2);
 				GLCD_WriteUINumber(14,0,UI_CLOCK_MINS ,1,2);
 				GLCD_WriteUINumber(14,1,UI_CLOCK_SECS ,1,2);
-				GLCD_WriteUINumber(11,1,f_uc_get_dcf77_state(),1,1);
+				GLCD_WriteUINumber(12,1,f_uc_get_dcf77_sensitivity(),1,1);
+				GLCD_WriteUINumber(10,1,f_uc_get_dcf77_state(),1,1);
 				if (f_uc_get_dcf77_state() == D_dcf77_state_FRAME_RECEIVED)
 				{
 					uc_valid_chk_result = f_uc_check_dcf77_frame_validity(UI_CLOCK_SECS, UI_CLOCK_MINS, UI_CLOCK_HOURS);

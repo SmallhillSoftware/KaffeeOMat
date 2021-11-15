@@ -1,0 +1,4 @@
+Version: 20211114
+Check: Der Feldstaerkeindex bleibt immer bei 0.
+       Ganz egal ob man mehrfach den Übergang vom
+       DCF77-Sync 0 nach 1 nach 2 durchlaufen hat.

@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.c                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.40, bases on 1.39 from MatchDisplay 20211026                                                              *
+*   Version     : 1.41, bases on 1.39 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -18,6 +18,8 @@ unsigned long volatile UL_DCF77_BIT_DURATION;
 unsigned long volatile UL_DCF77_BIT_DISTANCE;
 unsigned char volatile UC_DCF77_FIELD_CNT;
 unsigned char volatile UC_DCF77_BIT_FIELD[D_dcf77_MAX_NO_OF_BITS+1];
+unsigned long volatile ul_dcf77_ts_start_frame;
+unsigned long volatile ul_dcf77_ts_end_frame;
 //global DCF77-variables
 struct ST_MINVALS volatile ST_MINUTE;
 struct ST_DATEVALS volatile ST_HOUR;
@@ -113,6 +115,20 @@ unsigned char f_uc_get_dcf77_state(void)
 }
 
 /************************************************************************************
+Name:        f_uc_get_dcf77_sensitivity(void)_
+Parameters:  None
+Returns:     ST_MINUTE.uc_DCF77SENSITIVITY
+Description: returns the value of ST_MINUTE.uc_DCF77SENSITIVITY
+             0 = not initialized
+             1 = lowest sensitivity, means a lot of noise, equal to additional pulses
+             8 = highest sensitivity, means just sent pulses     
+************************************************************************************/
+unsigned char f_uc_get_dcf77_sensitivity(void)
+{
+	return ST_MINUTE.uc_DCF77SENSITIVITY;
+}
+
+/************************************************************************************
 Name:        f_vd_DCF77_init
 Parameters:  dcf77_tmp_data_reset must be different from zero for reseting old frame data
 Returns:     None
@@ -151,6 +167,7 @@ void f_vd_DCF77_init(_Bool dcf77_tmp_data_reset)
 		ST_MINUTE.uc_DATEVAL = 0;
 		ST_MINUTE.bt_DATEVAL_VALID = D_FALSE;
 		ST_MINUTE.uc_DATEVAL_FRAMENO = 0;
+		ST_MINUTE.uc_DCF77SENSITIVITY = 0;
 		ST_MINUTE.uc_tmpDATEVAL[0] = 0;
 		ST_MINUTE.uc_tmpDATEVAL[1] = 0;
 		ST_MINUTE.uc_tmpDATEVAL[2] = 0;
@@ -473,8 +490,42 @@ unsigned char uc_index;
 unsigned char tmp_ret_val;
 unsigned char tmp_rcv_val;
 _Bool         tmp_par_val;
+unsigned long tmp_frame_diff_time;
 	if (UC_DCF77_STATE == D_dcf77_state_FRAME_RECEIVED)
 	{
+		tmp_frame_diff_time = ul_dcf77_ts_end_frame - ul_dcf77_ts_start_frame;		
+		if (tmp_frame_diff_time > 57000) //55s between sync and end of frame pulse, should be 58000
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 8; //maximum sensitivity
+		}
+		else if (tmp_frame_diff_time > 55000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 7;
+		}
+		else if (tmp_frame_diff_time > 53000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 6;
+		}
+		else if (tmp_frame_diff_time > 51000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 5;
+		}
+		else if (tmp_frame_diff_time > 49000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 4;
+		}
+		else if (tmp_frame_diff_time > 45000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 3;
+		}
+		else if (tmp_frame_diff_time > 40000)
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 2;
+		}
+		else
+		{
+			ST_MINUTE.uc_DCF77SENSITIVITY = 1; //minimum sensitivity
+		}
 		uc_index = 0;
 		tmp_ret_val = 0;
 		tmp_rcv_val = 0;
@@ -879,6 +930,7 @@ unsigned long ul_diffTime;
 				if (f_b_check_dcf77_sync_pulse(UL_DCF77_BIT_DISTANCE))
 				{
 					UC_DCF77_STATE = D_dcf77_state_SYNC_FOUND;
+					ul_dcf77_ts_start_frame = UL_TIRQ_count1ms; //store time stamp of sync pulse
 					UC_DCF77_FIELD_CNT = 0;
 				} //end of if (f_b_check_dcf77_sync_pulse(UL_DCF77_BIT_DISTANCE))
 				if (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND)
@@ -895,6 +947,7 @@ unsigned long ul_diffTime;
 						{
 							UC_DCF77_RECEIVED_FRAME++;
 						} //end of if (UC_DCF77_RECEIVED_FRAME < 25)
+						ul_dcf77_ts_end_frame = UL_TIRQ_count1ms; //store time stamp of last frame pulse
 					} //end of if (UC_DCF77_FIELD_CNT == D_dcf77_MAX_NO_OF_BITS)
 				} //end of if (UC_DCF77_STATE == D_dcf77_state_SYNC_FOUND)
 			} //end of if (ul_diffTime > cDebounceTimeDcf77DataMs)				

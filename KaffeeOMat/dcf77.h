@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.h                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.25, bases on 1.24 from MatchDisplay 20211026                                                              *
+*   Version     : 1.26, bases on 1.24 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #define DATE_REQUIRED 1
 
@@ -109,7 +109,8 @@ struct ST_DATEVALS
 	unsigned int  uc_DATEVAL_FRAMENO : 8;
 	unsigned int  uc_noOfTmpDateVals : 3;
 	unsigned int  uc_DATEVAL_ptyValid: 2;
-	unsigned int  empty              :11;
+	unsigned int  uc_DCF77SENSITIVITY: 3;
+	unsigned int  empty              : 8;
 	unsigned char uc_tmpDATEVAL[3];
 };
 
@@ -143,6 +144,7 @@ extern unsigned int  UI_DATE_YEAR;
 unsigned char f_uc_check_dcf77_date_validity(void);
 unsigned char f_uc_check_dcf77_frame_validity(unsigned int ui_secs, unsigned int ui_mins, unsigned int ui_hours);
 unsigned char f_uc_get_dcf77_state(void);
+unsigned char f_uc_get_dcf77_sensitivity(void);
 void          f_vd_DCF77_init(_Bool dcf77_tmp_data_reset);
 void          f_vd_DCF77_disableIRQ(void);
 unsigned char f_uc_dcf77_get_date_minute(void);
