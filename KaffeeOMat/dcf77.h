@@ -97,7 +97,8 @@ struct ST_MINVALS
 	unsigned int  uc_DATEVAL_FRAMENO : 8;
 	unsigned int  uc_noOfTmpDateVals : 3;
 	unsigned int  uc_DATEVAL_ptyValid: 2;
-	unsigned int  empty              :11;
+	unsigned int  uc_DCF77SENSITIVITY: 3;
+	unsigned int  empty              : 8;
 	unsigned char uc_tmpDATEVAL[3];
 	unsigned long ul_tmpDV_timestamp[3];
 };
@@ -109,8 +110,7 @@ struct ST_DATEVALS
 	unsigned int  uc_DATEVAL_FRAMENO : 8;
 	unsigned int  uc_noOfTmpDateVals : 3;
 	unsigned int  uc_DATEVAL_ptyValid: 2;
-	unsigned int  uc_DCF77SENSITIVITY: 3;
-	unsigned int  empty              : 8;
+	unsigned int  empty              :11;
 	unsigned char uc_tmpDATEVAL[3];
 };
 

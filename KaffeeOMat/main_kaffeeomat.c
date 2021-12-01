@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : MAIN_KAFFEEOMAT.c                                                    *
 *   Contents    : Main Loop for KaffeeOMat                                             *
-*   Version     : 1.5 bases on main_funkuhr.c 1.17                                                               *
+*   Version     : 1.6 bases on main_funkuhr.c 1.17                                                               *
 *************************************************************************************/ 
 
 #include "globals.h"
@@ -108,10 +108,10 @@ unsigned char uc_valid_chk_result;
 				GLCD_WriteUINumber(11,0,UI_CLOCK_HOURS,1,2);
 				GLCD_WriteUINumber(14,0,UI_CLOCK_MINS ,1,2);
 				GLCD_WriteUINumber(14,1,UI_CLOCK_SECS ,1,2);
-				GLCD_WriteUINumber(12,1,f_uc_get_dcf77_sensitivity(),1,1);
 				GLCD_WriteUINumber(10,1,f_uc_get_dcf77_state(),1,1);
 				if (f_uc_get_dcf77_state() == D_dcf77_state_FRAME_RECEIVED)
 				{
+					GLCD_WriteUINumber(12,1,f_uc_get_dcf77_sensitivity(),1,1);					
 					uc_valid_chk_result = f_uc_check_dcf77_frame_validity(UI_CLOCK_SECS, UI_CLOCK_MINS, UI_CLOCK_HOURS);
 					if (f_uc_get_dcf77_state() == D_dcf77_state_FRAME_CHECKED)
 					{
