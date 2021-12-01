@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.c                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.41, bases on 1.39 from MatchDisplay 20211026                                                              *
+*   Version     : 1.42, bases on 1.39 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -476,6 +476,51 @@ unsigned char uc_ret_val;
 #endif
 
 /************************************************************************************
+Name:        f_vd_write_dcf77_sensitivity
+Parameters:  none
+Returns:     none
+Description: checks the time difference taken from first sync pulse of the
+             DCF77-frame to the 58th bit received. If it is 58.000ms it is
+			 a perfect match, meaning no noise pulses were decoded. Lower
+			 values mean lower sensitivity. Writes the value into the struct
+			 ST_MINUTE.uc_DCF77SENSITIVITY. Make sense to call only when
+			 UC_DCF77_STATE == D_dcf77_state_FRAME_RECEIVED
+************************************************************************************/
+void f_vd_write_dcf77_sensitivity(void)
+{
+unsigned long tmp_frame_diff_time;
+	tmp_frame_diff_time = ul_dcf77_ts_end_frame - ul_dcf77_ts_start_frame;		
+	if (tmp_frame_diff_time > 57000) //55s between sync and end of frame pulse, should be 58000
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 7; //maximum sensitivity
+	}
+	else if (tmp_frame_diff_time > 55000)
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 6;
+	}
+	else if (tmp_frame_diff_time > 53000)
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 5;
+	}
+	else if (tmp_frame_diff_time > 51000)
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 4;
+	}
+	else if (tmp_frame_diff_time > 45000)
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 3;
+	}
+	else if (tmp_frame_diff_time > 40000)
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 2;
+	}
+	else
+	{
+		ST_MINUTE.uc_DCF77SENSITIVITY = 1; //minimum sensitivity
+	}
+}
+
+/************************************************************************************
 Name:        f_uc_check_dcf77_frame_validity
 Parameters:  unsigned int ui_secs, unsigned int ui_mins, unsigned int ui_hours
 Returns:     check frame for validity
@@ -490,45 +535,12 @@ unsigned char uc_index;
 unsigned char tmp_ret_val;
 unsigned char tmp_rcv_val;
 _Bool         tmp_par_val;
-unsigned long tmp_frame_diff_time;
 	if (UC_DCF77_STATE == D_dcf77_state_FRAME_RECEIVED)
 	{
-		tmp_frame_diff_time = ul_dcf77_ts_end_frame - ul_dcf77_ts_start_frame;		
-		if (tmp_frame_diff_time > 57000) //55s between sync and end of frame pulse, should be 58000
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 8; //maximum sensitivity
-		}
-		else if (tmp_frame_diff_time > 55000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 7;
-		}
-		else if (tmp_frame_diff_time > 53000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 6;
-		}
-		else if (tmp_frame_diff_time > 51000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 5;
-		}
-		else if (tmp_frame_diff_time > 49000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 4;
-		}
-		else if (tmp_frame_diff_time > 45000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 3;
-		}
-		else if (tmp_frame_diff_time > 40000)
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 2;
-		}
-		else
-		{
-			ST_MINUTE.uc_DCF77SENSITIVITY = 1; //minimum sensitivity
-		}
 		uc_index = 0;
 		tmp_ret_val = 0;
 		tmp_rcv_val = 0;
+		f_vd_write_dcf77_sensitivity();
 		if	(UC_DCF77_RECEIVED_FRAME == 25)
 		{
 			f_vd_DCF77_init(D_TRUE);

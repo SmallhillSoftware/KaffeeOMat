@@ -8,37 +8,37 @@ C:\Renesas\NC30WA\V530R02\bin\ln30.exe @F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\
 
 # LINK FILE INFORMATION
 NCRT0 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30)
-	Nov 15 21:01:06 2021
+	Nov 17 09:48:15 2021
 
 ANALOGUE_INPUTS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30)
-	Nov 15 21:01:03 2021
+	Nov 17 09:48:12 2021
 
 DCF77 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30)
-	Nov 15 21:01:02 2021
+	Nov 17 09:48:11 2021
 
 EXTERNAL_INTERRUPTS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30)
-	Nov 15 21:01:02 2021
+	Nov 17 09:48:11 2021
 
 GLOBALS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30)
-	Nov 15 21:01:01 2021
+	Nov 17 09:48:10 2021
 
 GRAPHIC (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30)
-	Nov 15 21:01:03 2021
+	Nov 17 09:48:12 2021
 
 MAIN_KAFFEEOMAT (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\main_kaffeeomat.r30)
-	Nov 15 21:01:06 2021
+	Nov 17 09:48:15 2021
 
 ST7920 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30)
-	Nov 15 21:01:04 2021
+	Nov 17 09:48:13 2021
 
 SW_VERS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30)
-	Nov 15 21:01:05 2021
+	Nov 17 09:48:14 2021
 
 TIMER_IRQ (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30)
-	Nov 15 21:01:05 2021
+	Nov 17 09:48:14 2021
 
 UART1_FUNCTIONS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30)
-	Nov 15 21:01:06 2021
+	Nov 17 09:48:14 2021
 
 _I4DIVU (C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib)
 	Jan 13 13:58:43 2005
@@ -89,42 +89,42 @@ data_NOI                         REL ROMDATA 00C0A6 000000       NCRT0
 switch_table                     REL ROMDATA 00C0AE 000000       NCRT0
 program                          REL CODE    00C0AE 000000 2     NCRT0
                                  REL CODE    00C0AE 000066 2     ANALOGUE_INPUTS
-                                 REL CODE    00C114 000F1C 2     DCF77
-                                 REL CODE    00D030 0000B8 2     EXTERNAL_INTERRUPTS
-                                 REL CODE    00D0E8 00005D 2     GLOBALS
-                                 REL CODE    00D146 0002A6 2     GRAPHIC
-                                 REL CODE    00D3EC 0005FA 2     MAIN_KAFFEEOMAT
-                                 REL CODE    00D9E6 000D7A 2     ST7920
-                                 REL CODE    00E760 000167 2     TIMER_IRQ
-                                 REL CODE    00E8C8 00004D 2     _I4DIVU
-                                 REL CODE    00E916 00004B 2     _I4MODU
-                                 REL CODE    00E962 00001C 2     _I4MULU
-interrupt                        REL CODE    00E97E 000000 2     NCRT0
-                                 REL CODE    00E97E 000095       NCRT0
+                                 REL CODE    00C114 000F08 2     DCF77
+                                 REL CODE    00D01C 0000B8 2     EXTERNAL_INTERRUPTS
+                                 REL CODE    00D0D4 00005D 2     GLOBALS
+                                 REL CODE    00D132 0002A6 2     GRAPHIC
+                                 REL CODE    00D3D8 0005FA 2     MAIN_KAFFEEOMAT
+                                 REL CODE    00D9D2 000D7A 2     ST7920
+                                 REL CODE    00E74C 000167 2     TIMER_IRQ
+                                 REL CODE    00E8B4 00004D 2     _I4DIVU
+                                 REL CODE    00E902 00004B 2     _I4MODU
+                                 REL CODE    00E94E 00001C 2     _I4MULU
+interrupt                        REL CODE    00E96A 000000 2     NCRT0
+                                 REL CODE    00E96A 000095       NCRT0
 vector                           ABS ROMDATA 00FEDC 000100       NCRT0
 fvector                          ABS ROMDATA 00FFFC 000004       NCRT0
 # Total -------------------------------------------------------------------
                                      DATA           0001ED(0000493) Byte(s)
                                      ROMDATA        0001B1(0000433) Byte(s)
-                                     CODE           002965(0010597) Byte(s)
+                                     CODE           002951(0010577) Byte(s)
 
 ##########################################
 # (3) GLOBAL LABEL INFORMATION           #
 ##########################################
-$DataOut           00dafa  $GLCD_Alternativ   00d146  $GLCD_Circle       00d1fe
-$GLCD_Line         00d312  $GLCD_Read         00dc3a  $GLCD_Rectangle    00d18a
-$GLCD_SetCursor    00e720  $GLCD_SetPixel     00dd58  $GLCD_VerticalOf   00de68
-$GLCD_WriteStrin   00de9e  $GLCD_WriteUINum   00df48  $GLCD_WriteULNum   00e1b2
-$GLCD_rawRead      00dbae  $calcDDRAMaddres   00d9fa  $checkEven_Uneve   00d9e6
-$exit              00ea10  $f_b_check_dcf77   00c3f6  $f_uc_check_dcf7   00c604
+$DataOut           00dae6  $GLCD_Alternativ   00d132  $GLCD_Circle       00d1ea
+$GLCD_Line         00d2fe  $GLCD_Read         00dc26  $GLCD_Rectangle    00d176
+$GLCD_SetCursor    00e70c  $GLCD_SetPixel     00dd44  $GLCD_VerticalOf   00de54
+$GLCD_WriteStrin   00de8a  $GLCD_WriteUINum   00df34  $GLCD_WriteULNum   00e19e
+$GLCD_rawRead      00db9a  $calcDDRAMaddres   00d9e6  $checkEven_Uneve   00d9d2
+$exit              00e9fc  $f_b_check_dcf77   00c3f6  $f_uc_check_dcf7   00c6e6
 $f_ui_calc_abs_t   00c114  $f_vd_DCF77_init   00c20a  _B_BACKLIGHT_ON    0004b3
 _B_SWITCH_OK       0004b1  _B_VBAT_ACQUIRED   0004b2  _C_ENC_DELTA       0004b0
-_DataIn            00db4a  _Delay             00da64  _Extint_2_int      00d0a4
-_GLCD_ClearGFX     00dcfe  _GLCD_ClearTXT     00dcec  _GLCD_CursorOff    00e748
-_GLCD_Init         00e684  _GLCD_InitPorts    00dace  _GLCD_SetBasicMo   00dcc4
-_GLCD_SetExtende   00dcd8  _GLCD_WaitBusy     00dc2e  _ST_DAY            0004d6
+_DataIn            00db36  _Delay             00da50  _Extint_2_int      00d090
+_GLCD_ClearGFX     00dcea  _GLCD_ClearTXT     00dcd8  _GLCD_CursorOff    00e734
+_GLCD_Init         00e670  _GLCD_InitPorts    00daba  _GLCD_SetBasicMo   00dcb0
+_GLCD_SetExtende   00dcc4  _GLCD_WaitBusy     00dc1a  _ST_DAY            0004d6
 _ST_HOUR           0004cd  _ST_MINUTE         0004ba  _ST_MONTH          0004dd
-_ST_YEAR           0004e4  _SetDataInput      00daac  _SetDataOutput     00da8a
+_ST_YEAR           0004e4  _SetDataInput      00da98  _SetDataOutput     00da76
 _UC_BACKLIGHT_DU   0004b4  _UC_DATE_DAY       0004eb  _UC_DATE_HOUR      0004d5
 _UC_DATE_MINUTE    0004d4  _UC_DATE_MONTH     0004ec  _UC_DCF77_BIT_FI   000444
 _UC_DCF77_EDGE     0004b8  _UC_DCF77_FIELD_   0004b9  _UC_DCF77_RECEIV   0004b6
@@ -136,20 +136,20 @@ _UI_KAFFEE_MINS    00041a  _UI_KAFFEE_MONTH   000420  _UI_STATE          000404
 _UI_STATE_CHANGE   000412  _UI_VBAT_VOLTAGE   000410  _UL_DCF77_BIT_DI   000440
 _UL_DCF77_BIT_DU   00043c  _UL_DCF77_FALLIN   000430  _UL_DCF77_PREVIO   000434
 _UL_DCF77_RISING   000438  _UL_START_TIMEST   000422  _UL_TIRQ_count1m   000400
-_UL_int2_IRQ_tim   00040c  __i4divU           00e8c8  __i4modU           00e916
-__i4mulU           00e962  _dcf77_keyin0_ir   00ceaa  _exit              00ea10
-_f_b_check_dcf77   00c38a  _f_uc_check_dcf7   00cd02  _f_uc_dcf77_bit_   00c3ba
+_UL_int2_IRQ_tim   00040c  __i4divU           00e8b4  __i4modU           00e902
+__i4mulU           00e94e  _dcf77_keyin0_ir   00ce96  _exit              00e9fc
+_f_b_check_dcf77   00c38a  _f_uc_check_dcf7   00ccee  _f_uc_dcf77_bit_   00c3ba
 _f_uc_dcf77_get_   00c440  _f_uc_dcf77_get_   00c43c  _f_uc_dcf77_get_   00c438
 _f_uc_dcf77_get_   00c444  _f_uc_dcf77_get_   00c500  _f_uc_dcf77_get_   00c4ae
 _f_uc_dcf77_get_   00c44e  _f_uc_dcf77_get_   00c552  _f_uc_dcf77_get_   00c594
 _f_uc_get_dcf77_   00c1fc  _f_uc_get_dcf77_   00c1f8  _f_ui_calc_mins_   00c13a
 _f_ui_dcf77_get_   00c448  _f_vd_AcquireVol   00c0c0  _f_vd_DCF77_disa   00c37e
-_f_vd_DCF77_rese   00c1e2  _f_vd_ENCODER_RE   00d062  _f_vd_EXTINTS_in   00d030
-_f_vd_TIMERX_ini   00e760  _f_vd_TIMERY_ini   00e778  _f_vd_TIMERZ_ini   00e7a0
-_f_vd_adcInit      00c0ae  _f_vd_controller   00d0e8  _main              00d3ec
-_mk_date           000426  _mk_time           00042a  _timer_1ms_irq     00e7d6
-_ul_dcf77_ts_end   000486  _ul_dcf77_ts_sta   000482  dummy_int          00ea12
-start              00e97e  
+_f_vd_DCF77_rese   00c1e2  _f_vd_ENCODER_RE   00d04e  _f_vd_EXTINTS_in   00d01c
+_f_vd_TIMERX_ini   00e74c  _f_vd_TIMERY_ini   00e764  _f_vd_TIMERZ_ini   00e78c
+_f_vd_adcInit      00c0ae  _f_vd_controller   00d0d4  _f_vd_write_dcf7   00c604
+_main              00d3d8  _mk_date           000426  _mk_time           00042a
+_timer_1ms_irq     00e7c2  _ul_dcf77_ts_end   000486  _ul_dcf77_ts_sta   000482
+dummy_int          00e9fe  start              00e96a  
 
 ##########################################
 # (4) GLOBAL EQU SYMBOL INFORMATION      #
