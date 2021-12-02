@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : MAIN_KAFFEEOMAT.c                                                    *
 *   Contents    : Main Loop for KaffeeOMat                                             *
-*   Version     : 1.7 bases on main_funkuhr.c 1.17                                                               *
+*   Version     : 1.8 bases on main_funkuhr.c 1.17                                                               *
 *************************************************************************************/ 
 
 #include "globals.h"
@@ -115,22 +115,31 @@ unsigned char uc_valid_chk_result;
 					GLCD_WriteUINumber(12,1,f_uc_get_dcf77_sensitivity(),1,1);
 					if (f_uc_get_dcf77_state() == D_dcf77_state_FRAME_CHECKED)
 					{
-						//t2>3
-						uc_valid_chk_result = f_uc_check_dcf77_date_validity();
-						if (f_uc_get_dcf77_state() == D_dcf77_state_DATE_VALID)
+						//f_uc_check_dcf77_frame_validity returned D_dcf77_25_wrong_frames received						
+						if (uc_valid_chk_result == D_dcf77_25_wrong_frames)
 						{
-							UI_CLOCK_SECS  = 0;
-							UI_CLOCK_HOURS = (unsigned int)(f_uc_dcf77_get_date_hour());
-							UI_CLOCK_MINS  = (unsigned int)(f_uc_dcf77_get_date_minute());
-							#ifdef DATE_REQUIRED
-								UI_CLOCK_DAY   = (unsigned int)(f_uc_dcf77_get_date_day());
-								UI_CLOCK_MONTH = (unsigned int)(f_uc_dcf77_get_date_month());
-								UI_CLOCK_YEAR  = f_ui_dcf77_get_date_year();
-							#endif
-							f_vd_DCF77_disableIRQ();
-							UI_STATE = D_runningState;
-							UI_STATE_CHANGE = 1;
-						} //end of if (f_uc_get_dcf77_state() == D_dcf77_state_DATE_VALID)
+							GLCD_SetCursor(0, 0); //set cursor under 'Z' from Zeit to indicate that more than 25 frames received without meaningful data
+						} //end of if (uc_valid_chk_result == D_dcf77_25_wrong_frames)
+						else
+						{						
+							GLCD_CursorOff(); //reset eventually set cursor							
+							//t2>3
+							uc_valid_chk_result = f_uc_check_dcf77_date_validity();
+							if (f_uc_get_dcf77_state() == D_dcf77_state_DATE_VALID)
+							{
+								UI_CLOCK_SECS  = 0;
+								UI_CLOCK_HOURS = (unsigned int)(f_uc_dcf77_get_date_hour());
+								UI_CLOCK_MINS  = (unsigned int)(f_uc_dcf77_get_date_minute());
+								#ifdef DATE_REQUIRED
+									UI_CLOCK_DAY   = (unsigned int)(f_uc_dcf77_get_date_day());
+									UI_CLOCK_MONTH = (unsigned int)(f_uc_dcf77_get_date_month());
+									UI_CLOCK_YEAR  = f_ui_dcf77_get_date_year();
+								#endif
+							} //end of if (f_uc_get_dcf77_state() == D_dcf77_state_DATE_VALID)
+						} //end of else of if (uc_valid_chk_result == D_dcf77_25_wrong_frames)
+						f_vd_DCF77_disableIRQ();
+						UI_STATE = D_runningState;
+						UI_STATE_CHANGE = 1;
 					} //end of if (f_uc_get_dcf77_state() == D_dcf77_state_FRAME_CHECKED)
 				} //end of if (UC_DCF77_STATE == D_dcf77_state_FRAME_RECEIVED)
 				break; //of case D_adjustTimeState

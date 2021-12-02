@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : dcf77.c                                                           *
 *   Contents    : Decoder of DCF77-signal for Funkuhr                               *
-*   Version     : 1.42, bases on 1.39 from MatchDisplay 20211026                                                              *
+*   Version     : 1.43, bases on 1.39 from MatchDisplay 20211026                                                              *
 *************************************************************************************/ 
 #include "globals.h"
 #include "dcf77.h"
@@ -494,23 +494,23 @@ unsigned long tmp_frame_diff_time;
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 7; //maximum sensitivity
 	}
-	else if (tmp_frame_diff_time > 55000)
+	else if (tmp_frame_diff_time > 56000)
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 6;
 	}
-	else if (tmp_frame_diff_time > 53000)
+	else if (tmp_frame_diff_time > 55000)
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 5;
 	}
-	else if (tmp_frame_diff_time > 51000)
+	else if (tmp_frame_diff_time > 54000)
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 4;
 	}
-	else if (tmp_frame_diff_time > 45000)
+	else if (tmp_frame_diff_time > 53000)
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 3;
 	}
-	else if (tmp_frame_diff_time > 40000)
+	else if (tmp_frame_diff_time > 50000)
 	{
 		ST_MINUTE.uc_DCF77SENSITIVITY = 2;
 	}
@@ -543,7 +543,6 @@ _Bool         tmp_par_val;
 		f_vd_write_dcf77_sensitivity();
 		if	(UC_DCF77_RECEIVED_FRAME == 25)
 		{
-			f_vd_DCF77_init(D_TRUE);
 			return D_dcf77_25_wrong_frames;
 		} //end of if	(UC_DCF77_RECEIVED_FRAME == 25)
 		while (uc_index < D_dcf77_MAX_NO_OF_USED_BITS)
