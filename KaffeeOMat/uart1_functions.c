@@ -2,17 +2,16 @@
 *                                                                                   *
 *   File Name   : uart_functions.c                                                  *
 *   Contents    : UART-related functions for the KaffeeOMat                            *
-*   Version     : 1.10 bases on 1.9 from MatchDisplay 20211026                                                               *
+*   Version     : 1.12 bases on 1.9 from MatchDisplay 20211026                                                               *
 *************************************************************************************/ 
 #include "globals.h"
-#include "dcf77.h"
 
 #ifdef UART1_DEBUGGING
 
 //#define BIT_TIMINGS
 //#define RECEIVED_BITS
-#define FRAME_VALIDITY
-//#define VBAT_DUTYCYCLE
+//#define FRAME_VALIDITY
+#define VBAT_DUTYCYCLE
 
 /************************************************************************************
 Name:        sendTxd1
@@ -35,8 +34,8 @@ Description: Initial setting of UART1 registers
 ************************************************************************************/
 void f_vd_UART1_init(void)
 {
-        pd0_0 = 1;                              /* P0.0 = TxD11 Output */
-        pd3_7 = 0;                              /* P3.7 = RxD1 Input */
+   pd0_0 = 1;                              /* P0.0 = TxD11 Output */
+   pd3_7 = 0;                              /* P3.7 = RxD1 Input */
 	u1mr = 0x05; /* 8 bits to transmit */
 	u1c0 = 0x00;
 	u0rrm = 0;
@@ -298,13 +297,13 @@ if (UC_DCF77_FIELD_CNT > 0)
 	f_vd_sendTxd1('A');
 	f_vd_sendTxd1('T');
 	f_vd_sendTxd1(':');
-	digit = UI_VBAT_VOLTAGE_MV/1000;
+	digit = (unsigned char)(UI_VBAT_VOLTAGE_MV/1000);
 	f_vd_sendTxd1(0x30+digit);
 	value = UI_VBAT_VOLTAGE_MV - (digit*1000);
-	digit = value/100;
+	digit = (unsigned char)(value/100);
 	f_vd_sendTxd1(0x30+digit);
 	value = value - (digit*100);
-	digit = value/10;
+	digit = (unsigned char)(value/10);
 	f_vd_sendTxd1(0x30+digit);
 	value = value - (digit*10);
 	f_vd_sendTxd1(0x30+value);				
@@ -312,10 +311,10 @@ if (UC_DCF77_FIELD_CNT > 0)
 	f_vd_sendTxd1('D');
 	f_vd_sendTxd1('C');
 	f_vd_sendTxd1(':');
-	digit = UC_BACKLIGHT_DUTY/100;
+	digit = (unsigned char)(UC_BACKLIGHT_DUTY/100);
 	f_vd_sendTxd1(0x30+digit);
 	value = UC_BACKLIGHT_DUTY - (digit*100);
-	digit = value/10;
+	digit = (unsigned char)(value/10);
 	f_vd_sendTxd1(0x30+digit);
 	value = value - (digit*10);
 	f_vd_sendTxd1(0x30+value);

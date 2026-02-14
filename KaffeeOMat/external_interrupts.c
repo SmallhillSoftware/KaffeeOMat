@@ -34,29 +34,6 @@ void f_vd_EXTINTS_init(void)
 	ilvl2_int2ic  = 1;          /* interrupt prio level7 */
 }
 
-void f_vd_ENCODER_READ(void)
-{
-  static char c_enc_last = 0x01;
-  char c_i = 0;
-
-  if( EncoderDwn_port )
-  {
-    c_i = 1;
-  }
-
-  if( EncoderUp_port )
-  {
-    c_i ^= 3;				// convert gray to binary
-  }
-
-  c_i -= c_enc_last;			// difference new - last
-
-  if( c_i & 1 )                         // bit 0 = value (1)
-  {				
-    c_enc_last += c_i;			// store new as next last
-    C_ENC_DELTA += (c_i & 2) - 1;		// bit 1 = direction (+/-)
-  }
-}
 
 /************************************************************************************
 Name:        interrupt Extint 2

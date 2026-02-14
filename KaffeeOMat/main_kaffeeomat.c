@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : MAIN_KAFFEEOMAT.c                                                 *
 *   Contents    : Main Loop for KaffeeOMat                                          *
-*   Version     : 1.9 completely new approach                                       *
+*   Version     : 1.10 completely new approach                                      *
 *************************************************************************************/ 
 
 #include "globals.h"
@@ -46,21 +46,6 @@ void main (void)
     -----------------------------------*/
 	while(1)
 	{
-		//Calculations
-      //encoder input to minutes to run conversion
-		if (C_ENC_DELTA < 0)
-		{
-			UI_ENC_VALUE =  (-1 * C_ENC_DELTA)/2;
-		} //end of if (C_ENC_DELTA < 0)
-		else
-		{
-			UI_ENC_VALUE =  C_ENC_DELTA/2;
-		} //end of else of if (C_ENC_DELTA < 0)
-		if (UI_ENC_VALUE > 99)
-		{
-			UI_ENC_VALUE = 99;
-		} //end of if (UI_ENC_VALUE > 99)
-        
 		//Statemachine
 		switch (UI_STATE)
 		{
@@ -105,10 +90,14 @@ void main (void)
 					UI_CLOCK_HOURS = 0;
 					UI_CLOCK_DAYS = 0;
 				}
-				if (UI_VBAT_VOLTAGE_MV < D_WARNLEVEL_VBAT_MV)
-				{
-					UI_STATE = D_warnVbattState;
-					UI_STATE_CHANGE = 1;
+				if (B_VBAT_ACQUIRED == D_TRUE)
+				{				
+					if (UI_VBAT_VOLTAGE_MV < D_WARNLEVEL_VBAT_MV)
+					{
+						UI_STATE = D_warnVbattState;
+						UI_STATE_CHANGE = 1;
+					}
+					B_VBAT_ACQUIRED = D_FALSE;
 				}				
 				break; //of case D_runningState
 			case D_warnVbattState:
@@ -126,7 +115,9 @@ void main (void)
 					UI_STATE = D_runningState;
 					UI_STATE_CHANGE = 1;
 				}				
-				break; //of case D_setKaffeeTime
+				break; //of D_warnVbattState
+			default:
+				break;
 		} //end of switch (UI_STATE) 
 	} //end of while(1)
 } //end of void main (void)

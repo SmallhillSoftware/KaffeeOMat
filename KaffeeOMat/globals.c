@@ -2,11 +2,9 @@
 *                                                                                   *
 *   File Name   : globals.c                                                         *
 *   Contents    : Global Support Functions for KaffeeOMat                           *
-*   Version     : 1.11, bases on 1.6 from Funkuhr 20201205 and 1.2 from MatchDisplay 20211026                           *
+*   Version     : 1.12, bases on 1.6 from Funkuhr 20201205 and 1.2 from MatchDisplay 20211026                           *
 *************************************************************************************/ 
 #include "globals.h"
-#include "dcf77.h"
-
 
 
 //init after reset
@@ -44,6 +42,9 @@ void f_vd_controllerInit(void)
     f_vd_EXTINTS_init();              /* Initial setting of EXTINT registers  */
 
     f_vd_adcInit();
+    #ifdef UART1_DEBUGGING
+        f_vd_UART1_init();
+    #endif
 
     //settings for LED
     ActLED_port_dir = 1; //Output
