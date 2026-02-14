@@ -10,8 +10,8 @@
 "Renesas M16C Standard Toolchain" "5.30.02" 
 [CONFIGURATIONS]
 "Debug" "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug" 
-"Release" "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release" 
 "Debug_M16C_R8C_FoUSB_UART" "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Debug_M16C_R8C_FoUSB_UART" 
+"Release" "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release" 
 [BUILD_PHASES]
 "Renesas M16C C Compiler" 1 
 "Renesas M16C Librarian" 1 
@@ -110,15 +110,12 @@
 "Absolute file" "Renesas M16C Stype Converter" "Renesas M16C Linker" 
 [PROJECT_FILES]
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "User" "C source file" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\sw_vers.c" "User" "C source file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "User" "C source file" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" "User" "C source file" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.h" "User" "C header file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.h" "User" "C header file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.h" "User" "C header file" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ncrt0.a30" "User" "Assembly source file" 2 
@@ -142,29 +139,27 @@
 [GENERAL_DATA_SESSION_SessionM16C_R8C_FoUSB_UART]
 [OPTIONS_Debug_Renesas M16C C Compiler]
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "04e4cf7623bc6d10" 2 
-"C source file" "088f700ebf9e8a10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "04e4cf7623bc6d10" 2 
+"C source file" "088f700ebf9e8a10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\sw_vers.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" "0c1430a133bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\main_kaffeeomat.c" "0083a59c55bc6d10" 2 
 [OPTIONS_Debug_Renesas M16C Librarian]
-"Single Shot" "0083a59c55bc6d10" 6 
+"Single Shot" "047328487a7e7d10" 6 
 [OPTIONS_Debug_Renesas M16C Assembler]
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ncrt0.a30" "0c1430a133bc6d10" 3 
 "Assembly source file" "0ccaccd75f7a6d10" 3 
 [OPTIONS_Debug_Renesas M16C Stype Converter]
-"Single Shot" "04b9eda324ff6d10" 5 
+"Single Shot" "068d98487a7e7d10" 5 
 [OPTIONS_Debug_Renesas M16C Linker]
-"Single Shot" "04b9eda324ff6d10" 4 
+"Single Shot" "068d98487a7e7d10" 4 
 [OPTIONS_Debug_Renesas M16C Jump table Composer]
-"Single Shot" "0083a59c55bc6d10" 8 
+"Single Shot" "047328487a7e7d10" 8 
 [OPTIONS_Debug_Renesas M16C Configurator]
-"Single Shot" "0083a59c55bc6d10" 7 
+"Single Shot" "047328487a7e7d10" 7 
 [OPTIONS_Debug_SW-Version]
 "Single Shot" "08a3a22f43bc6d10" 1 
 [OPTIONS_Debug]
@@ -178,31 +173,64 @@
 "[V|VERSION|1] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 6 
 "[V|VERSION|1] [B|COMMAND|1] " 7 
 "[V|VERSION|1] " 8 
-[OPTIONS_Release_Renesas M16C C Compiler]
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C C Compiler]
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "04e4cf7623bc6d10" 2 
-"C source file" "088f700ebf9e8a10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "04e4cf7623bc6d10" 2 
+"C source file" "088f700ebf9e8a10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\sw_vers.c" "04e4cf7623bc6d10" 2 
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\main_kaffeeomat.c" "0083a59c55bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" "0c1430a133bc6d10" 2 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Librarian]
+"Single Shot" "047328487a7e7d10" 6 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Assembler]
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ncrt0.a30" "0c1430a133bc6d10" 3 
+"Assembly source file" "088f700ebf9e8a10" 3 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Stype Converter]
+"Single Shot" "068d98487a7e7d10" 5 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Linker]
+"Single Shot" "068d98487a7e7d10" 4 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Jump table Composer]
+"Single Shot" "047328487a7e7d10" 8 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Configurator]
+"Single Shot" "047328487a7e7d10" 7 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART_SW-Version]
+"Single Shot" "08a3a22f43bc6d10" 1 
+[OPTIONS_Debug_M16C_R8C_FoUSB_UART]
+"" 0 
+"1 $(PROJDIR)" 1 
+"[V|VERSION|1] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [B|INSPECTOR|1] [S|CPU|R8C] " 2 
+"[V|VERSION|1] [S|LIST|LM] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [S|CPU|R8C] [B|HEAP|1] [S|DEFINE|__USTACKSIZE__=080H] [S|DEFINE|__ISTACKSIZE__=080H]" 3 
+"[V|VERSION|1] [B|STARTUPLINK|1] [B|DEBUG|1] [B|MAP-S|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).x30^"] [S|INPUTLIBRARY|^"L=r8clib^"] [S|CPU|R8C] " 4 
+"[V|VERSION|1] [B|DATALENGTH|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|CPU|R8C] " 5 
+"[V|VERSION|1] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 6 
+"[V|VERSION|1] [B|COMMAND|1] " 7 
+"[V|VERSION|1] " 8 
+[OPTIONS_Release_Renesas M16C C Compiler]
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "04e4cf7623bc6d10" 2 
+"C source file" "088f700ebf9e8a10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\sw_vers.c" "04e4cf7623bc6d10" 2 
+"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\main_kaffeeomat.c" "0083a59c55bc6d10" 2 
 [OPTIONS_Release_Renesas M16C Librarian]
-"Single Shot" "0083a59c55bc6d10" 6 
+"Single Shot" "047328487a7e7d10" 6 
 [OPTIONS_Release_Renesas M16C Assembler]
 "F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ncrt0.a30" "086b90f265bc6d10" 3 
 "Assembly source file" "086b90f265bc6d10" 3 
 [OPTIONS_Release_Renesas M16C Stype Converter]
-"Single Shot" "0c572297cbbc6d10" 5 
+"Single Shot" "068d98487a7e7d10" 5 
 [OPTIONS_Release_Renesas M16C Linker]
-"Single Shot" "0c572297cbbc6d10" 4 
+"Single Shot" "068d98487a7e7d10" 4 
 [OPTIONS_Release_Renesas M16C Jump table Composer]
-"Single Shot" "0083a59c55bc6d10" 8 
+"Single Shot" "047328487a7e7d10" 8 
 [OPTIONS_Release_Renesas M16C Configurator]
-"Single Shot" "0083a59c55bc6d10" 7 
+"Single Shot" "047328487a7e7d10" 7 
 [OPTIONS_Release_SW-Version]
 "Single Shot" "08a3a22f43bc6d10" 1 
 [OPTIONS_Release]
@@ -216,54 +244,17 @@
 "[V|VERSION|1] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 6 
 "[V|VERSION|1] [B|COMMAND|1] " 7 
 "[V|VERSION|1] " 8 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C C Compiler]
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\timer_irq.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\dcf77.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ST7920.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\globals.c" "04e4cf7623bc6d10" 2 
-"C source file" "088f700ebf9e8a10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\external_interrupts.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\graphic.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\analogue_inputs.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\sw_vers.c" "04e4cf7623bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\main_kaffeeomat.c" "0083a59c55bc6d10" 2 
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\uart1_functions.c" "0c1430a133bc6d10" 2 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Librarian]
-"Single Shot" "0083a59c55bc6d10" 6 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Assembler]
-"F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\ncrt0.a30" "0c1430a133bc6d10" 3 
-"Assembly source file" "088f700ebf9e8a10" 3 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Stype Converter]
-"Single Shot" "029d169c55bc6d10" 5 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Linker]
-"Single Shot" "029d169c55bc6d10" 4 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Jump table Composer]
-"Single Shot" "0083a59c55bc6d10" 8 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_Renesas M16C Configurator]
-"Single Shot" "0083a59c55bc6d10" 7 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART_SW-Version]
-"Single Shot" "08a3a22f43bc6d10" 1 
-[OPTIONS_Debug_M16C_R8C_FoUSB_UART]
-"" 0 
-"1 $(PROJDIR)" 1 
-"[V|VERSION|1] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [B|INSPECTOR|1] [S|CPU|R8C] " 2 
-"[V|VERSION|1] [S|LIST|LM] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [S|CPU|R8C] [B|HEAP|1] [S|DEFINE|__USTACKSIZE__=080H] [S|DEFINE|__ISTACKSIZE__=080H]" 3 
-"[V|VERSION|1] [B|STARTUPLINK|1] [B|DEBUG|1] [B|MAP-S|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).x30^"] [S|INPUTLIBRARY|^"L=r8clib^"] [S|CPU|R8C] " 4 
-"[V|VERSION|1] [B|DATALENGTH|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|CPU|R8C] " 5 
-"[V|VERSION|1] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 6 
-"[V|VERSION|1] [B|COMMAND|1] " 7 
-"[V|VERSION|1] " 8 
 [SESSION_DATA_CONFIGURATION_SESSION_Debug_DefaultSession]
 "MEMORY_MAPPING_OPTIONS" "" 
 [SESSION_DATA_CONFIGURATION_SESSION_Debug_SessionM16C_R8C_FoUSB_UART]
 "MEMORY_MAPPING_OPTIONS" "Unknown Options" 
-[SESSION_DATA_CONFIGURATION_SESSION_Release_DefaultSession]
-"MEMORY_MAPPING_OPTIONS" "" 
-[SESSION_DATA_CONFIGURATION_SESSION_Release_SessionM16C_R8C_FoUSB_UART]
-"MEMORY_MAPPING_OPTIONS" "Unknown Options" 
 [SESSION_DATA_CONFIGURATION_SESSION_Debug_M16C_R8C_FoUSB_UART_DefaultSession]
 "MEMORY_MAPPING_OPTIONS" "" 
 [SESSION_DATA_CONFIGURATION_SESSION_Debug_M16C_R8C_FoUSB_UART_SessionM16C_R8C_FoUSB_UART]
+"MEMORY_MAPPING_OPTIONS" "Unknown Options" 
+[SESSION_DATA_CONFIGURATION_SESSION_Release_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[SESSION_DATA_CONFIGURATION_SESSION_Release_SessionM16C_R8C_FoUSB_UART]
 "MEMORY_MAPPING_OPTIONS" "Unknown Options" 
 [EXT_DEBUGGER_INFO]
 3 "C:\MTOOL\KD30\KD30.EXE" "" "" "$(CONFIGDIR)\\$(PROJECTNAME).x30" 

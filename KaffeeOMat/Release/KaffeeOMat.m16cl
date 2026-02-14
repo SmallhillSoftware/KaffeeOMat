@@ -5,7 +5,6 @@
 -R8C
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30
-F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30
@@ -13,4 +12,3 @@ F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\main_kaffeeomat.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30
 F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30
-F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30

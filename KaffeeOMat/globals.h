@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : globals.h                                                         *
 *   Contents    : Global Variables for KaffeeOMat                                   *
-*   Version     : 1.12, bases on global.h from Funkuhr 20201205 and 1.11 from MatchDisplay 20211026 *
+*   Version     : 1.13, bases on global.h from Funkuhr 20201205 and 1.11 from MatchDisplay 20211026 *
 *************************************************************************************/ 
 #include "sfr_r813.h"                       /* Definition of the R8C/10 SFR */
 
@@ -49,6 +49,7 @@
 extern volatile unsigned long UL_TIRQ_count1ms;
 extern volatile unsigned char UC_TIRQ_pwmCount;
 extern volatile unsigned int  UI_STATE;
+extern volatile unsigned int  UI_CLOCK_DAYS;
 extern volatile unsigned int  UI_CLOCK_HOURS;
 extern volatile unsigned int  UI_CLOCK_MINS;
 extern volatile unsigned int  UI_CLOCK_SECS;

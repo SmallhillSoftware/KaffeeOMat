@@ -2,7 +2,7 @@
 *                                                                                   *
 *   File Name   : timer_irq.c                                                       *
 *   Contents    : Timer interrupt related functions of KaffeeOMat                   *
-*   Version     : 1.6, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
+*   Version     : 1.7, basierend auf 1.2 vom Projekt Funkuhr 20201205               *
 *************************************************************************************/ 
 #include "globals.h"
 
@@ -132,6 +132,7 @@ unsigned long ul_inc_page_period = 0;
 				if (UI_CLOCK_HOURS == 23)
 				{
 					UI_CLOCK_HOURS = 0;
+					UI_CLOCK_DAYS++;
 				}
 				else
 				{
@@ -148,9 +149,6 @@ unsigned long ul_inc_page_period = 0;
 			UI_CLOCK_SECS++;
 		} //end of else of if (UI_CLOCK_SECS == 59)
 		ActLED_port = ~ActLED_port;
-		#ifdef UART1_DEBUGGING
-			f_vd_sendValues();                    /* send internal values on UART1 for debugging purposes */
-		#endif
 	} //end of if ( (UL_TIRQ_count1ms%1000) == 0 )
 	//enable all IRQ's
 	asm("FSET I");

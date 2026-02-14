@@ -8,37 +8,31 @@ C:\Renesas\NC30WA\V530R02\bin\ln30.exe @F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\
 
 # LINK FILE INFORMATION
 NCRT0 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30)
-	Dec  1 18:52:10 2021
+	Dec  2 18:16:50 2021
 
 ANALOGUE_INPUTS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30)
-	Dec  1 18:52:07 2021
-
-DCF77 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30)
-	Dec  1 18:52:06 2021
+	Dec  2 18:16:47 2021
 
 EXTERNAL_INTERRUPTS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30)
-	Dec  1 18:52:06 2021
+	Dec  2 18:16:47 2021
 
 GLOBALS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30)
-	Dec  1 18:52:05 2021
+	Dec  2 18:16:46 2021
 
 GRAPHIC (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30)
-	Dec  1 18:52:07 2021
+	Dec  2 18:16:48 2021
 
 MAIN_KAFFEEOMAT (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\main_kaffeeomat.r30)
-	Dec  1 18:52:10 2021
+	Dec  2 18:16:50 2021
 
 ST7920 (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30)
-	Dec  1 18:52:08 2021
+	Dec  2 18:16:49 2021
 
 SW_VERS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30)
-	Dec  1 18:52:08 2021
+	Dec  2 18:16:49 2021
 
 TIMER_IRQ (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30)
-	Dec  1 18:52:09 2021
-
-UART1_FUNCTIONS (F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30)
-	Dec  1 18:52:09 2021
+	Dec  2 18:16:49 2021
 
 _I4DIVU (C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib)
 	Jan 13 13:58:43 2005
@@ -59,97 +53,77 @@ bss_SE                           REL DATA    000400 000000 2     NCRT0
 data_SO                          REL DATA    000400 000000       NCRT0
 bss_SO                           REL DATA    000400 000000       NCRT0
 data_NE                          REL DATA    000400 000000 2     NCRT0
-                                 REL DATA    000400 000026       MAIN_KAFFEEOMAT
-                                 REL DATA    000426 000008       SW_VERS
-bss_NE                           REL DATA    00042E 000000 2     NCRT0
-                                 REL DATA    00042E 000002       ANALOGUE_INPUTS
-                                 REL DATA    000430 00005A       DCF77
-                                 REL DATA    00048A 000002       MAIN_KAFFEEOMAT
-                                 REL DATA    00048C 000022       ST7920
-data_NO                          REL DATA    0004AE 000000       NCRT0
-                                 REL DATA    0004AE 000001       EXTERNAL_INTERRUPTS
-                                 REL DATA    0004AF 000006       MAIN_KAFFEEOMAT
-                                 REL DATA    0004B5 000001       ST7920
-bss_NO                           REL DATA    0004B6 000000       NCRT0
-                                 REL DATA    0004B6 000037       DCF77
-stack                            REL DATA    0004EE 000100 2     NCRT0
-heap                             REL DATA    0005EE 000000       NCRT0
+                                 REL DATA    000400 00001A       MAIN_KAFFEEOMAT
+                                 REL DATA    00041A 000008       SW_VERS
+bss_NE                           REL DATA    000422 000000 2     NCRT0
+                                 REL DATA    000422 000002       ANALOGUE_INPUTS
+                                 REL DATA    000424 000002       MAIN_KAFFEEOMAT
+                                 REL DATA    000426 000022       ST7920
+data_NO                          REL DATA    000448 000000       NCRT0
+                                 REL DATA    000448 000001       EXTERNAL_INTERRUPTS
+                                 REL DATA    000449 000006       MAIN_KAFFEEOMAT
+                                 REL DATA    00044F 000001       ST7920
+bss_NO                           REL DATA    000450 000000       NCRT0
+stack                            REL DATA    000450 000100 2     NCRT0
+heap                             REL DATA    000550 000000       NCRT0
 rom_NE                           ABS ROMDATA 00C000 000000       NCRT0
 rom_NO                           REL ROMDATA 00C000 000000       NCRT0
-                                 REL ROMDATA 00C000 000077       MAIN_KAFFEEOMAT
-data_SEI                         REL ROMDATA 00C078 000000 2     NCRT0
-data_SOI                         REL ROMDATA 00C078 000000       NCRT0
-data_NEI                         REL ROMDATA 00C078 000000 2     NCRT0
-                                 REL ROMDATA 00C078 000026       MAIN_KAFFEEOMAT
-                                 REL ROMDATA 00C09E 000008       SW_VERS
-data_NOI                         REL ROMDATA 00C0A6 000000       NCRT0
-                                 REL ROMDATA 00C0A6 000001       EXTERNAL_INTERRUPTS
-                                 REL ROMDATA 00C0A7 000006       MAIN_KAFFEEOMAT
-                                 REL ROMDATA 00C0AD 000001       ST7920
-switch_table                     REL ROMDATA 00C0AE 000000       NCRT0
-program                          REL CODE    00C0AE 000000 2     NCRT0
-                                 REL CODE    00C0AE 000066 2     ANALOGUE_INPUTS
-                                 REL CODE    00C114 000EFC 2     DCF77
-                                 REL CODE    00D010 0000B8 2     EXTERNAL_INTERRUPTS
-                                 REL CODE    00D0C8 00005D 2     GLOBALS
-                                 REL CODE    00D126 0002A6 2     GRAPHIC
-                                 REL CODE    00D3CC 00060D 2     MAIN_KAFFEEOMAT
-                                 REL CODE    00D9DA 000D7A 2     ST7920
-                                 REL CODE    00E754 000167 2     TIMER_IRQ
-                                 REL CODE    00E8BC 00004D 2     _I4DIVU
-                                 REL CODE    00E90A 00004B 2     _I4MODU
-                                 REL CODE    00E956 00001C 2     _I4MULU
-interrupt                        REL CODE    00E972 000000 2     NCRT0
-                                 REL CODE    00E972 000095       NCRT0
+                                 REL ROMDATA 00C000 000060       MAIN_KAFFEEOMAT
+data_SEI                         REL ROMDATA 00C060 000000 2     NCRT0
+data_SOI                         REL ROMDATA 00C060 000000       NCRT0
+data_NEI                         REL ROMDATA 00C060 000000 2     NCRT0
+                                 REL ROMDATA 00C060 00001A       MAIN_KAFFEEOMAT
+                                 REL ROMDATA 00C07A 000008       SW_VERS
+data_NOI                         REL ROMDATA 00C082 000000       NCRT0
+                                 REL ROMDATA 00C082 000001       EXTERNAL_INTERRUPTS
+                                 REL ROMDATA 00C083 000006       MAIN_KAFFEEOMAT
+                                 REL ROMDATA 00C089 000001       ST7920
+switch_table                     REL ROMDATA 00C08A 000000       NCRT0
+program                          REL CODE    00C08A 000000 2     NCRT0
+                                 REL CODE    00C08A 000066 2     ANALOGUE_INPUTS
+                                 REL CODE    00C0F0 0000B8 2     EXTERNAL_INTERRUPTS
+                                 REL CODE    00C1A8 000050 2     GLOBALS
+                                 REL CODE    00C1F8 0002A6 2     GRAPHIC
+                                 REL CODE    00C49E 00022F 2     MAIN_KAFFEEOMAT
+                                 REL CODE    00C6CE 000D7A 2     ST7920
+                                 REL CODE    00D448 00016B 2     TIMER_IRQ
+                                 REL CODE    00D5B4 00004D 2     _I4DIVU
+                                 REL CODE    00D602 00004B 2     _I4MODU
+                                 REL CODE    00D64E 00001C 2     _I4MULU
+interrupt                        REL CODE    00D66A 000000 2     NCRT0
+                                 REL CODE    00D66A 000095       NCRT0
 vector                           ABS ROMDATA 00FEDC 000100       NCRT0
 fvector                          ABS ROMDATA 00FFFC 000004       NCRT0
 # Total -------------------------------------------------------------------
-                                     DATA           0001ED(0000493) Byte(s)
-                                     ROMDATA        0001B1(0000433) Byte(s)
-                                     CODE           002959(0010585) Byte(s)
+                                     DATA           000150(0000336) Byte(s)
+                                     ROMDATA        00018E(0000398) Byte(s)
+                                     CODE           001675(0005749) Byte(s)
 
 ##########################################
 # (3) GLOBAL LABEL INFORMATION           #
 ##########################################
-$DataOut           00daee  $GLCD_Alternativ   00d126  $GLCD_Circle       00d1de
-$GLCD_Line         00d2f2  $GLCD_Read         00dc2e  $GLCD_Rectangle    00d16a
-$GLCD_SetCursor    00e714  $GLCD_SetPixel     00dd4c  $GLCD_VerticalOf   00de5c
-$GLCD_WriteStrin   00de92  $GLCD_WriteUINum   00df3c  $GLCD_WriteULNum   00e1a6
-$GLCD_rawRead      00dba2  $calcDDRAMaddres   00d9ee  $checkEven_Uneve   00d9da
-$exit              00ea04  $f_b_check_dcf77   00c3f6  $f_uc_check_dcf7   00c6e6
-$f_ui_calc_abs_t   00c114  $f_vd_DCF77_init   00c20a  _B_BACKLIGHT_ON    0004b3
-_B_SWITCH_OK       0004b1  _B_VBAT_ACQUIRED   0004b2  _C_ENC_DELTA       0004b0
-_DataIn            00db3e  _Delay             00da58  _Extint_2_int      00d084
-_GLCD_ClearGFX     00dcf2  _GLCD_ClearTXT     00dce0  _GLCD_CursorOff    00e73c
-_GLCD_Init         00e678  _GLCD_InitPorts    00dac2  _GLCD_SetBasicMo   00dcb8
-_GLCD_SetExtende   00dccc  _GLCD_WaitBusy     00dc22  _ST_DAY            0004d6
-_ST_HOUR           0004cd  _ST_MINUTE         0004ba  _ST_MONTH          0004dd
-_ST_YEAR           0004e4  _SetDataInput      00daa0  _SetDataOutput     00da7e
-_UC_BACKLIGHT_DU   0004b4  _UC_DATE_DAY       0004eb  _UC_DATE_HOUR      0004d5
-_UC_DATE_MINUTE    0004d4  _UC_DATE_MONTH     0004ec  _UC_DCF77_BIT_FI   000444
-_UC_DCF77_EDGE     0004b8  _UC_DCF77_FIELD_   0004b9  _UC_DCF77_RECEIV   0004b6
-_UC_DCF77_STATE    0004b7  _UC_TIRQ_pwmCoun   0004af  _UI_CLOCK_DAY      000418
-_UI_CLOCK_HOURS    000406  _UI_CLOCK_MINS     000408  _UI_CLOCK_MONTH    000416
-_UI_CLOCK_SECS     00040a  _UI_CLOCK_YEAR     000414  _UI_DATE_YEAR      000480
-_UI_ENC_VALUE      00048a  _UI_KAFFEE_DAY     00041e  _UI_KAFFEE_HOURS   00041c
-_UI_KAFFEE_MINS    00041a  _UI_KAFFEE_MONTH   000420  _UI_STATE          000404
-_UI_STATE_CHANGE   000412  _UI_VBAT_VOLTAGE   000410  _UL_DCF77_BIT_DI   000440
-_UL_DCF77_BIT_DU   00043c  _UL_DCF77_FALLIN   000430  _UL_DCF77_PREVIO   000434
-_UL_DCF77_RISING   000438  _UL_START_TIMEST   000422  _UL_TIRQ_count1m   000400
-_UL_int2_IRQ_tim   00040c  __i4divU           00e8bc  __i4modU           00e90a
-__i4mulU           00e956  _dcf77_keyin0_ir   00ce8a  _exit              00ea04
-_f_b_check_dcf77   00c38a  _f_uc_check_dcf7   00cce2  _f_uc_dcf77_bit_   00c3ba
-_f_uc_dcf77_get_   00c440  _f_uc_dcf77_get_   00c43c  _f_uc_dcf77_get_   00c438
-_f_uc_dcf77_get_   00c444  _f_uc_dcf77_get_   00c500  _f_uc_dcf77_get_   00c4ae
-_f_uc_dcf77_get_   00c44e  _f_uc_dcf77_get_   00c552  _f_uc_dcf77_get_   00c594
-_f_uc_get_dcf77_   00c1fc  _f_uc_get_dcf77_   00c1f8  _f_ui_calc_mins_   00c13a
-_f_ui_dcf77_get_   00c448  _f_vd_AcquireVol   00c0c0  _f_vd_DCF77_disa   00c37e
-_f_vd_DCF77_rese   00c1e2  _f_vd_ENCODER_RE   00d042  _f_vd_EXTINTS_in   00d010
-_f_vd_TIMERX_ini   00e754  _f_vd_TIMERY_ini   00e76c  _f_vd_TIMERZ_ini   00e794
-_f_vd_adcInit      00c0ae  _f_vd_controller   00d0c8  _f_vd_write_dcf7   00c604
-_main              00d3cc  _mk_date           000426  _mk_time           00042a
-_timer_1ms_irq     00e7ca  _ul_dcf77_ts_end   000486  _ul_dcf77_ts_sta   000482
-dummy_int          00ea06  start              00e972  
+$DataOut           00c7e2  $GLCD_Alternativ   00c1f8  $GLCD_Circle       00c2b0
+$GLCD_Line         00c3c4  $GLCD_Read         00c922  $GLCD_Rectangle    00c23c
+$GLCD_SetCursor    00d408  $GLCD_SetPixel     00ca40  $GLCD_VerticalOf   00cb50
+$GLCD_WriteStrin   00cb86  $GLCD_WriteUINum   00cc30  $GLCD_WriteULNum   00ce9a
+$GLCD_rawRead      00c896  $calcDDRAMaddres   00c6e2  $checkEven_Uneve   00c6ce
+$exit              00d6fc  _B_BACKLIGHT_ON    00044d  _B_SWITCH_OK       00044b
+_B_VBAT_ACQUIRED   00044c  _C_ENC_DELTA       00044a  _DataIn            00c832
+_Delay             00c74c  _Extint_2_int      00c164  _GLCD_ClearGFX     00c9e6
+_GLCD_ClearTXT     00c9d4  _GLCD_CursorOff    00d430  _GLCD_Init         00d36c
+_GLCD_InitPorts    00c7b6  _GLCD_SetBasicMo   00c9ac  _GLCD_SetExtende   00c9c0
+_GLCD_WaitBusy     00c916  _SetDataInput      00c794  _SetDataOutput     00c772
+_UC_BACKLIGHT_DU   00044e  _UC_TIRQ_pwmCoun   000449  _UI_CLOCK_DAYS     000406
+_UI_CLOCK_HOURS    000408  _UI_CLOCK_MINS     00040a  _UI_CLOCK_SECS     00040c
+_UI_ENC_VALUE      000424  _UI_STATE          000404  _UI_STATE_CHANGE   000414
+_UI_VBAT_VOLTAGE   000412  _UL_START_TIMEST   000416  _UL_TIRQ_count1m   000400
+_UL_int2_IRQ_tim   00040e  __i4divU           00d5b4  __i4modU           00d602
+__i4mulU           00d64e  _exit              00d6fc  _f_vd_AcquireVol   00c09c
+_f_vd_ENCODER_RE   00c122  _f_vd_EXTINTS_in   00c0f0  _f_vd_TIMERX_ini   00d448
+_f_vd_TIMERY_ini   00d460  _f_vd_TIMERZ_ini   00d488  _f_vd_adcInit      00c08a
+_f_vd_controller   00c1a8  _main              00c49e  _mk_date           00041a
+_mk_time           00041e  _timer_1ms_irq     00d4be  dummy_int          00d6fe
+start              00d66a  
 
 ##########################################
 # (4) GLOBAL EQU SYMBOL INFORMATION      #
@@ -165,7 +139,6 @@ __SB__           00000400
 ##########################################
 @ NCRT0 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30 )
 @ ANALOGUE_INPUTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30 )
-@ DCF77 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30 )
 @ EXTERNAL_INTERRUPTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30 )
 @ GLOBALS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30 )
 @ GRAPHIC ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30 )
@@ -173,7 +146,6 @@ __SB__           00000400
 @ ST7920 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30 )
 @ SW_VERS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30 )
 @ TIMER_IRQ ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30 )
-@ UART1_FUNCTIONS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30 )
 @ _I4DIVU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MODU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MULU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
@@ -183,7 +155,6 @@ __SB__           00000400
 ##########################################
 @ NCRT0 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30 )
 @ ANALOGUE_INPUTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30 )
-@ DCF77 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30 )
 @ EXTERNAL_INTERRUPTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30 )
 @ GLOBALS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30 )
 @ GRAPHIC ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30 )
@@ -191,7 +162,6 @@ __SB__           00000400
 @ ST7920 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30 )
 @ SW_VERS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30 )
 @ TIMER_IRQ ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30 )
-@ UART1_FUNCTIONS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30 )
 @ _I4DIVU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MODU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MULU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
@@ -201,7 +171,6 @@ __SB__           00000400
 ##########################################
 @ NCRT0 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ncrt0.r30 )
 @ ANALOGUE_INPUTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\analogue_inputs.r30 )
-@ DCF77 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\dcf77.r30 )
 @ EXTERNAL_INTERRUPTS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\external_interrupts.r30 )
 @ GLOBALS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\globals.r30 )
 @ GRAPHIC ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\graphic.r30 )
@@ -209,7 +178,6 @@ __SB__           00000400
 @ ST7920 ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\ST7920.r30 )
 @ SW_VERS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\sw_vers.r30 )
 @ TIMER_IRQ ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\timer_irq.r30 )
-@ UART1_FUNCTIONS ( F:\HEW_Workspaces\KaffeeOMat\KaffeeOMat\Release\uart1_functions.r30 )
 @ _I4DIVU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MODU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )
 @ _I4MULU ( C:\Renesas\NC30WA\V530R02\lib30\r8clib.lib )

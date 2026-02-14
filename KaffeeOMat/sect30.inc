@@ -672,8 +672,7 @@ switch_table_top:
 	.lword	dummy_int		; vector 10
 	.lword	dummy_int		; vector 11
 	.lword	dummy_int		; vector 12
-	.glb    _dcf77_keyin0_irq
-	.lword	_dcf77_keyin0_irq	; vector 13 Key Input
+	.lword	dummy_int	    ; vector 13 Key Input
 	.lword	dummy_int		; vector 14
 	.lword	dummy_int		; vector 15
 	.lword	dummy_int		; vector 16
